@@ -1,0 +1,27 @@
+{
+  "name": "ebazaar",
+  "version": "1.0.0",
+  "description": "Software J component",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishek0405/EBazaar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhishek0405/EBazaar/issues"
+  },
+  "homepage": "https://github.com/abhishek0405/EBazaar#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.1",
+    "request": "^2.88.2"
+  }
+}
