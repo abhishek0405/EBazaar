@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const productSchema = mongoose.Schema({
     name:{type:String,requried:true},
     category:{type:String,requried:true},
@@ -7,7 +8,13 @@ const productSchema = mongoose.Schema({
     discount:{type:Number,required:true},
     description:{type:String,requried:true},
     price:{type:Number, required:true},
-    productImage:{type:String,required:true}//type String as we will show only url pointing to the image in DB.
+    productImage: 
+    { 
+        data: Buffer, 
+        contentType: String 
+    } 
+
+   
 })
 
 module.exports = mongoose.model('Product',productSchema); 

@@ -1,11 +1,19 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
-const { reverse } = require('methods');
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());//to read json from posterquests
+app.use(express.json());
+
+app.use(
+    express.urlencoded({
+      extended: false
+    })
+);
+  
+
+app.use(morgan('dev'));
 app.set("view engine","ejs");
 app.get('/',(req,res)=>{
     res.render("home");
