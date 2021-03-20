@@ -1,9 +1,17 @@
 FILL UP THE FORM TO ADD THE PRODUCT
+<p></p>
 
+<p></p>
+<p></p>
 <form method="POST" action="/products" >
    Name:<input type = "text" name="name">
    <p></p>
-   Category:<input type = "text" name="category">
+   Category:
+   <p></p>
+   <%category.forEach(item=>{%>
+      <%=item.name%>: <input type = "radio" name="category" value=<%=item._id%>>
+      
+   <%})%>
    <p></p>
    Seller:<input type = "text" name="seller">
    <p></p>

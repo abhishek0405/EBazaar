@@ -1,6 +1,9 @@
 <%-include('../partials/header')%>
 ALL PRODUCTS HEREEEE
 <p></p>
-<%=products%>
+<%products.forEach(product=>{%>
+    <%=product%>
+    <p></p>
+<%})%>
 
 <%-include('../partials/footer')%>

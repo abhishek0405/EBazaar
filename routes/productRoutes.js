@@ -1,6 +1,7 @@
 const express  = require('express');
 const router = express.Router();
 const Product = require('../models/product');
+const Category = require('../models/category');
 //show all products
 router.get('/',(req,res)=>{
     Product.find()
@@ -34,8 +35,18 @@ router.post('/',(req,res)=>{
 })
 
 //add new product route
-router.get('/new',(Req,res)=>{
-    res.render('Product/AddProduct');
+router.get('/new',(req,res)=>{
+    Category.find()
+             .exec()
+             .then(foundCategory=>{
+                res.render('Product/AddProduct',{category:foundCategory});
+             })
+             .catch(err=>{
+                 console.log("could not fetch category",err);
+                 res.send("error occcured")
+             })
+    
+   
 })
 
 

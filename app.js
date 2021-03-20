@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
 const mongoose = require('mongoose');
 const uri = "mongodb+srv://abhishek:"+process.env.DB_KEY+"@cluster0.dfvfh.mongodb.net/EbazaarDB?retryWrites=true&w=majority";
 console.log(uri);
@@ -28,6 +29,7 @@ app.get('/',(req,res)=>{
 })
 app.use(authRoutes); 
 app.use('/products',productRoutes);
+app.use('/category',categoryRoutes);
 app.use((req,res,next)=>{
     const error = new Error('Not found');
     error.status = 404;
