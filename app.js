@@ -4,8 +4,16 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
+const mongoose = require('mongoose');
+const uri = "mongodb+srv://abhishek:"+process.env.DB_KEY+"@cluster0.dfvfh.mongodb.net/EbazaarDB?retryWrites=true&w=majority";
+console.log(uri);
+mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true})
+        .then(()=>console.log('CONNECTED'))
+        .catch((err)=>{
+            console.log('COULD NOT CONNECT');
+            console.log(err);
+        });
 app.use(express.json());
-
 app.use(
     express.urlencoded({
       extended: false
