@@ -1,8 +1,13 @@
-Abhishek
-
+Abhishek tasks
 ->Initial Setup ->DONE
 ->Add product,category Schemas ->DONE
 ->Category wise product search -> DONE
 ->Add user authentication       ->PENDING
 ->Add image upload for product,category ->PENDING
 ->Add subcategory/(query terms maybe) for each product ->PENDING
+->Add update,delete routes for products ->PENDING
+->Filter products based on price,subcategory ->PENDING
+->Add review model for each product ->PENDING
+->Similar Product Comparison Feature ->PENDING
+->Decide if individual schemas for each category have to be designed ->PENDING
+
