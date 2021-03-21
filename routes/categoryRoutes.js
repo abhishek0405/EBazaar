@@ -1,6 +1,7 @@
 const express  = require('express');
 const router = express.Router();
 const Category  = require('../models/category');
+const Product = require('../models/product');
 //category/all
 router.get('/',(req,res)=>{
     Category.find()
@@ -36,5 +37,31 @@ router.post('/',(req,res)=>{
             })
 
 })
+//view products of specific category
+router.get('/:id',(req,res)=>{
+    let categoryId = req.params.id;
+    Category.findById(categoryId)
+            .exec()
+            .then(foundCategory=>{
+                Product.find({category:categoryId})
+                //.populate('category') can do if needed
+                .exec()
+                .then(foundProducts=>{
+                    console.log(foundProducts);
+                    res.render('Product/ShowProductCategoryWise',{products:foundProducts,category:foundCategory});
+                })
+            })
+   
+            
+           .catch(err=>{
+               console.log("Error while fetching products",err);
+               res.send("Unexpected error")
+           })
+})
 
 module.exports = router;
+
+// foundProducts.forEach(product=>{
+//     if(product.category &&product.category.toString()==categoryId){
+//         console.log(product);
+//     }
