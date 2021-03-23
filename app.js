@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(express.static('public'));
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const authRoutes = require('./routes/authRoutes');
@@ -14,6 +15,7 @@ mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true})
             console.log('COULD NOT CONNECT');
             console.log(err);
         });
+
 app.use(express.json());
 app.use(
     express.urlencoded({
