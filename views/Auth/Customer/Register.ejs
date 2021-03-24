@@ -2,16 +2,16 @@
 <head></head>
 Welcome to customer registration
 <body>
-<form method = "POST" action="#">
-    Name <input type = "text" placeholder="James"> 
+<form method = "POST" action="/customer/register">
+    Name <input type = "text" placeholder="James" name="name"> 
     <p></p>
-    Phone<input type = "text" placeholder="999999999"> 
+    Phone<input type = "text" placeholder="999999999" name="phone"> 
     <p></p>
-    Email <input type = "email" placeholder="xyz@domainname.com"> 
+    Email <input type = "email" placeholder="xyz@domainname.com" name="email"> 
     <p></p>
-    Password <input type = "password" placeholder="***********" id="pass1"> 
+    Password <input type = "password" placeholder="***********" id="pass1" name="password"> 
     <p></p>
-    Confirm Password <input type = "password" placeholder="***********" id="pass2"> 
+   <button type="submit">Submit</button>
     
     <p></p>
     <div id="message">
@@ -21,6 +21,6 @@ Welcome to customer registration
     
 
 </form>
-<script src="/scripts/CustomerReg.js"></script> 
+<!--<script src="/scripts/CustomerReg.js"></script> -->
 </body>
 </html>
