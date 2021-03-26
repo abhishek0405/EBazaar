@@ -2,7 +2,8 @@ Abhishek tasks
 ->Initial Setup ->DONE
 ->Add product,category Schemas ->DONE
 ->Category wise product search -> DONE
-->Add user authentication       ->PENDING
+->Add customer authentication  ->DONE
+->Add seller authentication ->PENDING
 ->Add image upload for product,category ->PENDING
 ->Add subcategory/(query terms maybe) for each product ->PENDING
 ->Add update,delete routes for products ->PENDING

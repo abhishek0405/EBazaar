@@ -3,6 +3,7 @@ const app = express();
 app.use(express.static('public'));
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser')
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -15,7 +16,7 @@ mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true})
             console.log('COULD NOT CONNECT');
             console.log(err);
         });
-
+app.use(cookieParser())
 app.use(express.json());
 app.use(
     express.urlencoded({
@@ -39,9 +40,9 @@ app.use((req,res,next)=>{
 })
 
 //whatever error redirected and  handled here
-app.use((error,req,res,next)=>{
-    res.send("Could not find page")
-});
+// app.use((error,req,res,next)=>{
+//     res.send("Could not find page")
+// });
 
 
 module.exports = app;

@@ -2,8 +2,11 @@ const express  = require('express');
 const router = express.Router();
 const Product = require('../models/product');
 const Category = require('../models/category');
+const isLoggedin = require('../middleware/Auth/isLoggedin');
+const isSeller = require('../middleware/Auth/isSeller');
+const isCustomer = require('../middleware/Auth/isCustomer');
 //show all products
-router.get('/',(req,res)=>{
+router.get('/',isLoggedin,isCustomer,(req,res)=>{
     Product.find()
             .exec()
             .then(allProducts=>{
@@ -35,7 +38,7 @@ router.post('/',(req,res)=>{
 })
 
 //add new product route
-router.get('/new',(req,res)=>{
+router.get('/new',isLoggedin,isSeller,(req,res)=>{
     Category.find()
              .exec()
              .then(foundCategory=>{
