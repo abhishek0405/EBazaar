@@ -3,7 +3,7 @@ Abhishek tasks
 ->Add product,category Schemas ->DONE
 ->Category wise product search -> DONE
 ->Add customer authentication  ->DONE
-->Add seller authentication ->PENDING
+->Add seller authentication ->DONE
 ->Add image upload for product,category ->PENDING
 ->Add subcategory/(query terms maybe) for each product ->PENDING
 ->Add update,delete routes for products ->PENDING
