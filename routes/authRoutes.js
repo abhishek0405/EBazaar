@@ -138,7 +138,7 @@ router.post('/seller/login',(req,res)=>{
                             })
                             console.log("token is",token);
                             res.cookie('authToken',token);
-                            res.send("logged in yay");
+                            res.redirect('/seller/home');
                             
                         }
                         else{
