@@ -178,7 +178,8 @@ router.post('/seller/register',(req,res)=>{
                         companyEmail:req.body.companyEmail,
                         phone : req.body.phone,
                         password:hash,
-                        usertype:"seller"
+                        usertype:"seller",
+                        myProducts:[]
                     })
                     user.save()
                         .then(newseller=>{

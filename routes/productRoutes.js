@@ -6,7 +6,7 @@ const isLoggedin = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
 const isCustomer = require('../middleware/Auth/isCustomer');
 //show all products
-router.get('/',isLoggedin,isCustomer,(req,res)=>{
+router.get('/',isLoggedin,(req,res)=>{
     Product.find()
             .exec()
             .then(allProducts=>{
@@ -42,7 +42,7 @@ router.get('/new',isLoggedin,isSeller,(req,res)=>{
     Category.find()
              .exec()
              .then(foundCategory=>{
-                res.render('Product/AddProduct',{category:foundCategory});
+                res.render('Product/AddProduct',{category:foundCategory,userData:req.userData});
              })
              .catch(err=>{
                  console.log("could not fetch category",err);

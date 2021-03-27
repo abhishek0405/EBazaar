@@ -6,7 +6,8 @@ const sellerSchema = mongoose.Schema({
     companyEmail:{type:String,requried:true},
     phone:{type:String,requried:true},
     password:{type:String,requried:true},
-    usertype:{type:String,default:"seller"} //if undefiend in form then default used
+    usertype:{type:String,default:"seller"}, //if undefiend in form then default used
+    myProducts:[{type:mongoose.Schema.Types.ObjectId,ref:'Product'}]
 
 
    
