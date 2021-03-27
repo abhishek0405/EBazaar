@@ -2,6 +2,7 @@ const express  = require('express');
 const router = express.Router();
 const Product = require('../models/product');
 const Category = require('../models/category');
+const Seller = require('../models/seller');
 const isLoggedin = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
 const isCustomer = require('../middleware/Auth/isCustomer');
@@ -22,12 +23,25 @@ router.get('/',isLoggedin,(req,res)=>{
 router.post('/',(req,res)=>{
     console.log("received");
     console.log(req.body);
-    
+    //return res.json("will render waito");
     const product = new Product(req.body);
     product.save()
             .then(newProduct=>{
                 console.log("PRODUCT ADDED SUCCESFULLY");
-                res.redirect('/products');
+                //add the product id to the seller's products
+                Seller.findById(req.body.seller)
+                       .exec()
+                       .then(foundSeller=>{
+                           console.log("found this seller");
+                           console.log(foundSeller);
+                           foundSeller.myProducts.push(newProduct._id);
+                           foundSeller.save();
+                           res.redirect('/products');
+                       })
+                       
+
+                
+                
             })
             .catch(err=>{
                 console.log(err);

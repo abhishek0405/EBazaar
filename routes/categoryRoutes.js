@@ -5,6 +5,7 @@ const router = express.Router();
 const Category  = require('../models/category');
 const Product = require('../models/product');
 
+
 //category/all
 router.get('/',(req,res)=>{
     console.log(req.userData);
