@@ -12,8 +12,7 @@ FILL UP THE FORM TO ADD THE PRODUCT
       <%=item.name%>: <input type = "radio" name="category" value=<%=item._id%>>
       
    <%})%>
-   <p></p>
-   Seller:<input type = "text" name="seller" value = "<%=userData.companyName%>" readonly>
+   <input type = "text" name="seller" value = "<%=userData.id%>" readonly hidden>
    <p></p>
    Stock:<input type = "text" name="stock">
    <p></p>

@@ -127,6 +127,7 @@ router.post('/seller/login',(req,res)=>{
                             console.log("password matches");
                             //inside .sign put details you might need for current user(dont put password!)
                             const token = jwt.sign({
+                                id:foundSeller[0]._id,
                                 companyEmail:foundSeller[0].companyEmail,
                                 companyName:foundSeller[0].companyName,
                                 phone:foundSeller[0].phone,

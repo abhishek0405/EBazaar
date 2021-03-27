@@ -22,7 +22,7 @@ router.get('/',isLoggedin,(req,res)=>{
 router.post('/',(req,res)=>{
     console.log("received");
     console.log(req.body);
-
+    
     const product = new Product(req.body);
     product.save()
             .then(newProduct=>{
