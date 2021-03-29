@@ -1,0 +1,20 @@
+FILL UP THE FORM TO EDIT THE PRODUCT
+<p></p>
+
+<p></p>
+<p></p>
+<form method="POST" action="/products/edit/<%=myProduct.id%>" >
+   Name:<input type = "text" name="name" value = "<%=myProduct.name%>">
+   <p></p>
+   
+   <input type = "text" name="seller" value = "<%=myProduct.seller%>" readonly hidden>
+   <p></p>
+   Stock:<input type = "text" name="stock" value="<%=myProduct.stock%>">
+   <p></p>
+   Discount:<input type = "text" name="discount" value = "<%=myProduct.discount%>">
+   <p></p>
+   Description:<input type = "text" name="description" value = "<%=myProduct.description%>">
+   <p></p>
+   Price:<input type = "text" name="price" value = "<%=myProduct.price%>">
+   <button type="submit">Submit</button>
+</form>

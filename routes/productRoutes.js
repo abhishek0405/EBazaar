@@ -66,6 +66,24 @@ router.get('/new',isLoggedin,isSeller,(req,res)=>{
    
 })
 
+//route to edit product config
+router.get('/edit/:id',(req,res)=>{
+    Product.findById(req.params.id)
+            .exec()
+            .then(foundProduct=>{
+                console.log(foundProduct);
+                res.render("Product/EditProduct",{myProduct:foundProduct});
+            })
+            .catch(err=>{
+                console.log(err);
+                res.send("systtem error");
+            })
+    
+})
+router.patch('/:id',(req,res)=>{
+    console.log("in edit route");
+})
+
 
 
 

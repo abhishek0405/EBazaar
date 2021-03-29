@@ -8,4 +8,9 @@ MY PROFILE :<a href="#">Profile</a>
 <p></p>
 MY Products: <a href = "#">Products</a>
 <p></p>
-<%=myProducts%>
+<% myProducts.forEach(item=>{%>
+    <%=item%>
+    <a href="/products/edit/<%=item._id%>">UpdateDetails</a>
+    <p></p>
+<%})%>
+   
