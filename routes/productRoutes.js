@@ -6,6 +6,7 @@ const Seller = require('../models/seller');
 const isLoggedin = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
 const isCustomer = require('../middleware/Auth/isCustomer');
+const isOwner = require('../middleware/Auth/isOwner');
 //show all products
 router.get('/',isLoggedin,(req,res)=>{
     Product.find()
@@ -69,50 +70,37 @@ router.get('/new',isLoggedin,isSeller,(req,res)=>{
 //route to edit product config
 router.get('/edit/:id',isLoggedin,isSeller,(req,res)=>{
     Product.findById(req.params.id)
-            .exec()
-            .then(foundProduct=>{
-                if(foundProduct.seller.toString()==req.userData.id){
-                    console.log("authorised");
-                    res.render("Product/EditProduct",{myProduct:foundProduct});
-                } 
-                else{
-                    return res.send("not authorised");
-                }
-                
-            })
-            .catch(err=>{
-                console.log(err);
-                res.send("systtem error");
-            })
+    .exec()
+    
+    .then(foundProduct=>{
+        res.render("Product/EditProduct",{myProduct:foundProduct});
+        
+    })
+    .catch(err=>{
+        console.log(err);
+        res.send("systtem error");
+    })
     
 })
 //@TODO: Only certified seller can update
-router.patch('/:id',isLoggedin,isSeller,(req,res)=>{
+router.patch('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
     console.log("in edit route");
     console.log(req.body);
    
-    Product.findById(req.params.id)
+    Product.updateOne({_id:req.params.id},{$set:req.body})
             .exec()
-            .then(foundProduct=>{
-                if(foundProduct.seller.toString()==req.userData.id){
-                    Product.updateOne({_id:req.params.id},{$set:req.body})
-                            .exec()
-                            .then(updatedProduct=>{
-                                console.log("product updated");
-                                res.redirect('/seller/home');
-                            })
-                            .catch(err=>{
-                                console.log(err);
-                                res.send("system error")
-                            })
-                } 
-                else{
-                    return res.send("not authorised");
-                }
-                
+            .then(updatedProduct=>{
+                 console.log("product updated");
+                res.redirect('/seller/home');
             })
+            .catch(err=>{
+                 console.log(err);
+                 res.send("system error")
+             })
+        }) 
+               
     
-})
+
 
 
 
