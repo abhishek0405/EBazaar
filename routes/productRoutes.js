@@ -8,7 +8,7 @@ const isSeller = require('../middleware/Auth/isSeller');
 const isCustomer = require('../middleware/Auth/isCustomer');
 const isOwner = require('../middleware/Auth/isOwner');
 //show all products
-router.get('/',isLoggedin,(req,res)=>{
+router.get('/',isLoggedin,isCustomer,(req,res)=>{
     Product.find()
             .exec()
             .then(allProducts=>{
