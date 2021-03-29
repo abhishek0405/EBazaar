@@ -1,18 +1,28 @@
 Abhishek tasks
 
+PHASE 1:
 
 ->Initial Setup ->DONE
 ->Add product,category Schemas ->DONE
 ->Category wise product search -> DONE
 ->Add customer authentication  ->DONE
 ->Add seller authentication ->DONE
-->Add image upload for product,category ->PENDING
 ->ADD flush DB functionality ->DONE
-->Add subcategory/(query terms maybe) for each product ->PENDING
 ->Seller should be able to view his products in a portal ->DONE
 ->Add update,delete routes for individual products by respective seller ->DONE
+->Add image upload for product,category ->PENDING
+->Add subcategory/query terms while adding product->PENDING
+->Decide if individual schemas for each category have to be designed ->PENDING
+
+PHASE 2
+->Search bar to find products based on keywords ->PENDING
 ->Filter products based on price,subcategory ->PENDING
 ->Add review model for each product ->PENDING
 ->Similar Product Comparison Feature ->PENDING
-->Decide if individual schemas for each category have to be designed ->PENDING
+->Add Wishlist Module Feature  ->PENDING
+
+PHASE 3
+->Add items to cart ->PENDING
+->Modify Quantity in the cart and show the final bill->PENDING
+->Proceed to payment gateway->PENDING
 
