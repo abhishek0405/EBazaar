@@ -80,8 +80,20 @@ router.get('/edit/:id',(req,res)=>{
             })
     
 })
+//@TODO: Only certified seller can update
 router.patch('/:id',(req,res)=>{
     console.log("in edit route");
+    console.log(req.body);
+    Product.updateOne({_id:req.params.id},{$set:req.body})
+            .exec()
+            .then(updatedProduct=>{
+                console.log("product updated");
+                res.redirect('/seller/home');
+            })
+            .catch(err=>{
+                console.log(err);
+                res.send("system error")
+            })
 })
 
 
