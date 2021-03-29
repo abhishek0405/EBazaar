@@ -37,7 +37,7 @@ router.post('/',(req,res)=>{
                            console.log(foundSeller);
                            foundSeller.myProducts.push(newProduct._id);
                            foundSeller.save();
-                           res.redirect('/products');
+                           res.redirect('/seller/home');
                        })
                        
 

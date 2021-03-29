@@ -8,7 +8,7 @@ Abhishek tasks
 ->ADD flush DB functionality ->DONE
 ->Add subcategory/(query terms maybe) for each product ->PENDING
 ->Seller should be able to view his products in a portal ->DONE
-->Add update,delete routes for individual products by respective seller ->PENDING
+->Add update,delete routes for individual products by respective seller ->DONE
 ->Filter products based on price,subcategory ->PENDING
 ->Add review model for each product ->PENDING
 ->Similar Product Comparison Feature ->PENDING
