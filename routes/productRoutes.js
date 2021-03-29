@@ -106,9 +106,14 @@ router.delete('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
            .then(result=>{
                 console.log("deleted yay");
                 //also delete from array in seller
-                Seller.findById(req.userData.id)
-                      .then
-                res.redirect('/seller/home');
+                Seller.updateOne({ _id: req.userData.id }, { $pull: { myProducts: req.params.id } })
+                .exec()
+                .then(result=>{
+                    console.log("deleted from seller array");
+                    res.redirect('/seller/home');
+                })
+                      
+                
            })
            .catch(err=>{
                console.log(err);
