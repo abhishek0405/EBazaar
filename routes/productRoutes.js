@@ -82,7 +82,7 @@ router.get('/edit/:id',isLoggedin,isSeller,(req,res)=>{
     })
     
 })
-//@TODO: Only certified seller can update
+
 router.patch('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
     console.log("in edit route");
     console.log(req.body);
@@ -98,6 +98,23 @@ router.patch('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
                  res.send("system error")
              })
         }) 
+
+//delete a product
+router.delete('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
+    Product.remove({_id:req.params.id})
+           .exec()
+           .then(result=>{
+                console.log("deleted yay");
+                //also delete from array in seller
+                Seller.findById(req.userData.id)
+                      .then
+                res.redirect('/seller/home');
+           })
+           .catch(err=>{
+               console.log(err);
+               res.send("system error");
+           })
+})
                
     
 

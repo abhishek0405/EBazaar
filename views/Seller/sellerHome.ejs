@@ -11,6 +11,9 @@ MY Products: <a href = "#">Products</a>
 <% myProducts.forEach(item=>{%>
     <%=item%>
     <a href="/products/edit/<%=item._id%>">UpdateDetails</a>
+    <form method="POST" action = "/products/<%=item._id%>?_method=DELETE">
+        <button type="submit">Delete This</button>
+    </form>
     <p></p>
 <%})%>
    
