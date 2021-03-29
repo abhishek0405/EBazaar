@@ -3,7 +3,7 @@ FILL UP THE FORM TO EDIT THE PRODUCT
 
 <p></p>
 <p></p>
-<form method="POST" action="/products/edit/<%=myProduct.id%>" >
+<form method="POST" action="/products/<%=myProduct.id%>?_method=PATCH" >
    Name:<input type = "text" name="name" value = "<%=myProduct.name%>">
    <p></p>
    

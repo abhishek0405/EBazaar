@@ -3,7 +3,8 @@ const app = express();
 app.use(express.static('public'));
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -24,6 +25,7 @@ app.use(
       extended: false
     })
 );
+app.use(methodOverride("_method"));
   
 
 app.use(morgan('dev'));
