@@ -7,11 +7,39 @@ const isLoggedin = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
 const isCustomer = require('../middleware/Auth/isCustomer');
 const isOwner = require('../middleware/Auth/isOwner');
+const fs   = require('fs');
+const path = require('path');
 const multer = require('multer');
+const storage = multer.diskStorage({ 
+    destination: (req, file, cb) => { 
+        cb(null, 'uploads/products') 
+    }, 
+    filename: (req, file, cb) => { 
+        
+        cb(null, file.originalname); 
+    } 
+}); 
+const uploadsPath = path.join(__dirname,'../');
+
+const fileFilter = (req,file,cb)=>{
+    //reject file
+    if(file.mimetype==='image/jpeg'||file.mimetype==='image/png'){
+        cb(null,true);//true to save
+    } 
+    else{
+        cb(new Error('Upload only jpeg or png files!!'),false);//false to reject the file
+    }
+}
+
+const upload = multer({storage:storage,limits:{
+    fileSize:1024*1024*7 //in bytes hence 1024 *1024 is 1MB. Do 1MB *(number of mbs needed max limit)
+},
+ fileFilter:fileFilter
+});
 
  
 //show all products
-router.get('/',isLoggedin,isCustomer,(req,res)=>{
+router.get('/',isLoggedin,(req,res)=>{
     Product.find()
             .exec()
             .then(allProducts=>{
@@ -24,11 +52,25 @@ router.get('/',isLoggedin,isCustomer,(req,res)=>{
     
 })
 //post product
-router.post('/',(req,res)=>{
+router.post('/',upload.single('photo'),(req,res)=>{
     console.log("received");
     console.log(req.body);
+    const productObj = {
+        name:req.body.name,
+        category:req.body.category,
+        seller:req.body.seller,
+        stock:req.body.stock,
+        discount:req.body.stock,
+        description:req.body.description,
+        price:req.body.price,
+
+        productImage:{
+            data: fs.readFileSync(path.join(uploadsPath + '/uploads/products/' + req.file.filename)), 
+            contentType: 'image/jpg'
+        }
+    }
     //return res.json("will render waito");
-    const product = new Product(req.body);
+    const product = new Product(productObj);
     product.save()
             .then(newProduct=>{
                 console.log("PRODUCT ADDED SUCCESFULLY");

@@ -4,6 +4,37 @@ const isLoggedin = require('../middleware/Auth/isLoggedin');
 const router = express.Router();
 const Category  = require('../models/category');
 const Product = require('../models/product');
+const fs   = require('fs');
+const path = require('path');
+const multer = require('multer');
+const storage = multer.diskStorage({ 
+    destination: (req, file, cb) => { 
+        cb(null, 'uploads/category') 
+    }, 
+    filename: (req, file, cb) => { 
+        
+        cb(null, file.originalname); 
+    } 
+}); 
+const uploadsPath = path.join(__dirname,'../');
+
+const fileFilter = (req,file,cb)=>{
+    //reject file
+    if(file.mimetype==='image/jpeg'||file.mimetype==='image/png'){
+        cb(null,true);//true to save
+    } 
+    else{
+        cb(new Error('Upload only jpeg or png files!!'),false);//false to reject the file
+    }
+}
+
+const upload = multer({storage:storage,limits:{
+    fileSize:1024*1024*7 //in bytes hence 1024 *1024 is 1MB. Do 1MB *(number of mbs needed max limit)
+},
+ fileFilter:fileFilter
+});
+
+
 
 
 //category/all
@@ -26,10 +57,21 @@ router.get('/new',(req,res)=>{
     res.render("Category/AddCategory")
 })
 
-router.post('/',(req,res)=>{
-    //@TODO ADD NON REPEATING CATEGORIES VALIDATION
+router.post('/',upload.single('photo'),(req,res)=>{
+    console.log(uploadsPath);
     
-    const category = new Category(req.body);
+    //@TODO ADD NON REPEATING CATEGORIES VALIDATION
+    console.log(req.file);
+    const categoryObj = {
+        name:req.body.name,
+        description:req.body.description,
+        categoryImage:{
+            data: fs.readFileSync(path.join(uploadsPath + '/uploads/category/' + req.file.filename)), 
+            contentType: 'image/jpg'
+        }
+    }
+    console.log(categoryObj);
+    const category = new Category(categoryObj);
     category.save()
             .then(newCategory=>{
                 console.log("POST SUCCESFUL");

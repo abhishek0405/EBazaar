@@ -1,9 +1,11 @@
 FILL UP THE FORM TO ADD THE PRODUCT
 
-<form method="POST" action="/category" >
+<form method="POST" action="/category" enctype="multipart/form-data">
    Name:<input type = "text" name="name">
    <p></p>
    Description:<input type = "text" name="description">
+   <p></p>
+   Photo <input type = "file" name="photo" >
    <p></p>
    <button type="submit">Submit</button>
 </form>

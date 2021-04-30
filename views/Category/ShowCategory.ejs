@@ -1,7 +1,13 @@
 ALL categories here
 <p></p>
 <%categories.forEach(category=>{%>
+    <%if (category.categoryImage.data){%>
+        <img  height="250" width="250" src="data:image/<%=category.categoryImage.contentType%>;base64, 
+        <%=category.categoryImage.data.toString('base64')%>">  
+    <%}%>
+    <p></p>
     <%=category%>
+
     <a href = "/category/<%=category._id%>"><%=category.name%></a>
     <p></p>
 <%})%>
