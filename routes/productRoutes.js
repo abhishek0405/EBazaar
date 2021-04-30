@@ -7,6 +7,9 @@ const isLoggedin = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
 const isCustomer = require('../middleware/Auth/isCustomer');
 const isOwner = require('../middleware/Auth/isOwner');
+const multer = require('multer');
+
+ 
 //show all products
 router.get('/',isLoggedin,isCustomer,(req,res)=>{
     Product.find()
