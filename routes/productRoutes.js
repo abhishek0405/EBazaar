@@ -4,6 +4,7 @@ const Product = require('../models/product');
 const Category = require('../models/category');
 const Seller = require('../models/seller');
 const Review = require('../models/review')
+const Customer = require('../models/customer')
 const isLoggedin = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
 const isCustomer = require('../middleware/Auth/isCustomer');
@@ -190,30 +191,6 @@ router.get('/:id/review', isLoggedin, (req, res)=>{
 
 //posting/update a review
 router.post('/:id/review', isLoggedin, isCustomer, (req, res)=>{
-    // Review.count({product: req.params.id, customer: req.userData.id}, (err, count)=>{
-    //     if(count>0){
-    //         res.send("review already exists, please update")
-    //     } else if(err){
-    //         console.log(err);
-    //         res.send("system error");
-    //     } else {
-    //         let review = new Review({
-    //             product: req.params.id,
-    //             customer: req.userData.email,
-    //             rating: req.body.rating,
-    //             review: req.body.review ? req.body.review : ''
-    //         })
-    //         review.save()
-    //             .then(()=>{
-    //                 res.send("Added review")
-    //                 console.log("Review added:")
-    //                 console.log(review)
-    //             }).catch(err=>{
-    //                 console.log(err);
-    //                 res.send("system error");
-    //             })
-    //     }
-    // })
     Review.updateOne({
         product: req.params.id,
         customerEmail: req.userData.email,
@@ -242,8 +219,6 @@ router.delete('/:id/review', isLoggedin, isCustomer, (req, res)=>{
         res.send("system error")
     })
 })
-
-
 
 
 
