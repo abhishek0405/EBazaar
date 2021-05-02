@@ -1,4 +1,4 @@
-Abhishek tasks
+Tasks
 
 PHASE 1:
 
@@ -10,7 +10,7 @@ PHASE 1:
 ->ADD flush DB functionality ->DONE
 ->Seller should be able to view his products in a portal ->DONE
 ->Add update,delete routes for individual products by respective seller ->DONE
-->Add image upload for product,category ->PENDING
+->Add image upload functionality for product,category ->DONE
 ->Add subcategory/query terms while adding product->PENDING
 ->Decide if individual schemas for each category have to be designed ->PENDING
 

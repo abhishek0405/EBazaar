@@ -3,7 +3,7 @@ FILL UP THE FORM TO ADD THE PRODUCT
 
 <p></p>
 <p></p>
-<form method="POST" action="/products" >
+<form method="POST" action="/products" enctype="multipart/form-data">
    Name:<input type = "text" name="name">
    <p></p>
    Category:
@@ -21,5 +21,6 @@ FILL UP THE FORM TO ADD THE PRODUCT
    Description:<input type = "text" name="description">
    <p></p>
    Price:<input type = "text" name="price">
+   Photo <input type = "file" name="photo" >
    <button type="submit">Submit</button>
 </form>
