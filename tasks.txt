@@ -12,7 +12,7 @@ PHASE 1:
 ->Add update,delete routes for individual products by respective seller ->DONE
 ->Add image upload functionality for product,category ->DONE
 ->Add subcategory/query terms while adding product->DONE
-->Decide if individual schemas for each category have to be designed ->PENDING
+
 
 PHASE 2
 ->Search bar to find products based on keywords ->DONE
