@@ -14,6 +14,7 @@ const isOwner = require('../middleware/Auth/isOwner');
 const fs   = require('fs');
 const path = require('path');
 const multer = require('multer');
+const async = require('async');
 const storage = multer.diskStorage({ 
     destination: (req, file, cb) => { 
         cb(null, 'uploads/products') 
@@ -25,14 +26,40 @@ const storage = multer.diskStorage({
 }); 
 const uploadsPath = path.join(__dirname,'../');
 
+
+async function getProducts(query_arr){
+    let matchedProducts=[];
+    for(let word of query_arr){
+
+        let obj = await Keyword.find({keyword:word});
+        if(obj.length>0){
+            matchedProducts.push(...obj[0].products)
+        }
+        
+
+        
+    }
+    return matchedProducts;
+}
  //Searching routes
- router.post('/search/',isLoggedin,isCustomer,(req,res)=>{
+ router.post('/search/',isLoggedin,async(req,res)=>{
      //NEW APPROACH
      //STORE KEYWORDS IN COLLECTION IE keyword,array of product ids.
      //for each word in keyword,get the product Ids and render.
     let query_arr = req.body.searchtext.split(" ");
     console.log(query_arr);
-    matchedProducts = [];
+    let matchedProducts = await getProducts(query_arr);
+
+    //find products
+    let final_products=[]
+    for(let prod of matchedProducts){
+        let obj = await Product.findById(prod)
+        final_products.push(obj);
+    }
+    console.log(final_products);
+    res.render("Product/ShowQueryProducts",{products:final_products,query:req.body.searchtext});
+    
+    
    
 
 })

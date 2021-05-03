@@ -15,7 +15,7 @@ PHASE 1:
 ->Decide if individual schemas for each category have to be designed ->PENDING
 
 PHASE 2
-->Search bar to find products based on keywords ->PENDING
+->Search bar to find products based on keywords ->DONE
 ->Filter products based on price,subcategory ->PENDING
 ->Add review model for each product ->DONE
 ->Add Wishlist Module Feature  ->DONE
