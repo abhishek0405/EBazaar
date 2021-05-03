@@ -5,10 +5,15 @@ ALL PRODUCTS HEREEEE
     <%if (product.productImage.data){%>
         <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
         <%=product.productImage.data.toString('base64')%>">  
-    <%}%>
-    <p></p>
-    <%=product%>
-    <p></p>
+        <%}%>
+        <p></p>
+        <%=product%>
+        <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p>
+        <form method="POST"  action="/products/wishlist">
+            <input name="id" value="<%= product._id %>" hidden>
+            (<input type="submit" value="+Wishlist">)
+        </form>
+        
 <%})%>
 
 <%-include('../partials/footer')%>

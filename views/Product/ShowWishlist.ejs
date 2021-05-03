@@ -1,0 +1,9 @@
+My Wishlist:
+<p></p>
+<% wishes.forEach(wish => { %>
+    <%= wish %>
+    <form method="POST" action="/products/wishlist/<%= wish._id %>?_method=DELETE">
+        <input name="id" value="<%= wish._id %>" hidden>
+        (<input type="submit" value="Delete">)
+    </form>
+<% }) %>

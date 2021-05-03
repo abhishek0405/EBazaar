@@ -1,0 +1,23 @@
+Reviews
+<br>
+<br>
+<h5>Add/Update your review</h5>
+
+<form method="POST">
+    Rating <select name="rating" placeholder="select one">
+        <option value=5>5</option>
+        <option value=4>4</option>
+        <option value=3>3</option>
+        <option value=2>2</option>
+        <option value=1>1</option>
+    </select>
+    
+    Review <input type="textarea" name="review"> 
+    
+   <button type="submit">Submit</button>
+<br>
+<br>
+User's reviews:
+<% reviews.forEach(review => { %>
+    <p>Rating: <%= review.rating %> <br> Review: <%= review.review %> </p>
+<% }) %>

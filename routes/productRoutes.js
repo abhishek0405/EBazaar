@@ -3,6 +3,8 @@ const router = express.Router();
 const Product = require('../models/product');
 const Category = require('../models/category');
 const Seller = require('../models/seller');
+const Review = require('../models/review')
+const Customer = require('../models/customer')
 const isLoggedin = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
 const isCustomer = require('../middleware/Auth/isCustomer');
@@ -144,6 +146,9 @@ router.patch('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
              })
         }) 
 
+
+
+
 //delete a product
 router.delete('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
     Product.remove({_id:req.params.id})
@@ -166,10 +171,54 @@ router.delete('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
            })
 })
                
-    
+//customer reviews
+//getting `count` reviews
+router.get('/:id/review', isLoggedin, (req, res)=>{
+    let count = 5
+    if(req.body.hasOwnProperty('count') && count>=0){
+        count = req.body.count
+    }
+    console.log(`Loading reviews Limit(${count})`)
+    Review.find({product: req.params.id}).limit(count).then(reviews => {
+        console.log(`reviews found: ${reviews}`)
+        res.render('Product/ShowReviews', {reviews: reviews})
+    })
+    .catch(err=>{
+        console.log(err);
+        res.send("system error");
+    })
+})
 
-
-
+//posting/update a review
+router.post('/:id/review', isLoggedin, isCustomer, (req, res)=>{
+    Review.updateOne({
+        product: req.params.id,
+        customerEmail: req.userData.email,
+    }, {
+        rating: req.body.rating,
+        review: req.body.review ? req.body.review : ''
+    }, {
+        upsert: true
+    }).exec().then(upsertReview => {
+        console.log(`Upsert: review: rating: ${upsertReview.rating}, review: ${upsertReview.review}}`)
+        res.send("yay added")
+    }).catch(error => {
+        console.log(error)
+        res.send("system error")
+    })    
+})
+//delete review
+router.delete('/:id/review', isLoggedin, isCustomer, (req, res)=>{
+    Review.remove({
+        product: req.params.id,
+        customerEmail: req.userData.email
+    }).exec().then(result => {
+        res.send("yay deleted")
+        console.log("deleted yay")
+    }).catch(error => {
+        res.send("system error")
+    })
+})
 
 
 

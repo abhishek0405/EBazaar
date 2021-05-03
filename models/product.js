@@ -13,7 +13,8 @@ const productSchema = mongoose.Schema({
     { 
         data: Buffer, 
         contentType: String 
-    } 
+    },
+    // review: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]
 
    
 })
