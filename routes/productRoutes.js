@@ -1,9 +1,11 @@
 const express  = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Product = require('../models/product');
 const Category = require('../models/category');
 const Seller = require('../models/seller');
-const Review = require('../models/review')
+const Review = require('../models/review');
+const Keyword = require('../models/keywords');
 const Customer = require('../models/customer')
 const isLoggedin = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
@@ -23,6 +25,18 @@ const storage = multer.diskStorage({
 }); 
 const uploadsPath = path.join(__dirname,'../');
 
+ //Searching routes
+ router.post('/search/',isLoggedin,isCustomer,(req,res)=>{
+     //NEW APPROACH
+     //STORE KEYWORDS IN COLLECTION IE keyword,array of product ids.
+     //for each word in keyword,get the product Ids and render.
+    let query_arr = req.body.searchtext.split(" ");
+    console.log(query_arr);
+    matchedProducts = [];
+   
+
+})
+
 const fileFilter = (req,file,cb)=>{
     //reject file
     if(file.mimetype==='image/jpeg'||file.mimetype==='image/png'){
@@ -39,7 +53,7 @@ const upload = multer({storage:storage,limits:{
  fileFilter:fileFilter
 });
 
- 
+
 //show all products
 router.get('/',isLoggedin,(req,res)=>{
     Product.find()
@@ -55,9 +69,14 @@ router.get('/',isLoggedin,(req,res)=>{
 })
 //post product
 router.post('/',upload.single('photo'),(req,res)=>{
+    
     console.log("received");
     console.log(req.body);
+    var id= new mongoose.Types.ObjectId();
+    console.log(id);
+    
     const productObj = {
+        _id:id,
         name:req.body.name,
         category:req.body.category,
         seller:req.body.seller,
@@ -84,17 +103,49 @@ router.post('/',upload.single('photo'),(req,res)=>{
                            console.log(foundSeller);
                            foundSeller.myProducts.push(newProduct._id);
                            foundSeller.save();
+                           keyphrase_arr = req.body.keyphrase.split(" ");
+                           console.log(keyphrase_arr);
+                           
+                           for(let word of keyphrase_arr ){
+                               
+                               console.log("word is ",word);
+                               Keyword.find({keyword:word})
+                                      .exec()
+                                      .then(foundKeyword=>{
+                                          console.log("The keyword objext array found for "+word);
+                                          console.log(foundKeyword);
+                                          if(foundKeyword.length==0){
+                                               let keywordObj = {
+                                                   keyword:word,
+                                                   products:[id]
+                                               }
+                                               const newKeyword = new Keyword(keywordObj);
+           
+                                               newKeyword.save()
+                                                         .then(pro=>{
+                                                             console.log("added keyword");
+                                                         })
+                                                         
+                                          }
+                                          else{
+                                               foundKeyword[0].products.push(id);//adding product id
+                                               foundKeyword[0].save();
+                                          }
+                                          
+                                      })
+           
+                           }
                            res.redirect('/seller/home');
+                               
                        })
-                       
-
+                       .catch(err=>{
+                           console.log(err);
+                           res.status(500).send("Error while adding product.Try again");
+                       })
+                           
+                       })
                 
-                
-            })
-            .catch(err=>{
-                console.log(err);
-                res.status(500).send("Error while adding product.Try again");
-            })
+               
 
     
 })
@@ -219,6 +270,9 @@ router.delete('/:id/review', isLoggedin, isCustomer, (req, res)=>{
         res.send("system error")
     })
 })
+
+
+
 
 
 

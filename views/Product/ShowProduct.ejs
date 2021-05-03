@@ -1,4 +1,10 @@
 <%-include('../partials/header')%>
+Search product
+<p></p>
+<form method="POST" action="/products/search">
+    <input type="text" name="searchtext" style="border: 2px solid black;" placeholder="search here">
+    <button type="submit"></button>
+</form>
 ALL PRODUCTS HEREEEE
 <p></p>
 <%products.forEach(product=>{%>
