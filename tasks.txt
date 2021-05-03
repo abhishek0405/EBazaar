@@ -17,8 +17,8 @@ PHASE 1:
 PHASE 2
 ->Search bar to find products based on keywords ->PENDING
 ->Filter products based on price,subcategory ->PENDING
-->Add review model for each product ->PENDING
-->Add Wishlist Module Feature  ->PENDING
+->Add review model for each product ->DONE
+->Add Wishlist Module Feature  ->DONE
 ->Similar Product Comparison Feature ->PENDING
 
 
