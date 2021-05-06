@@ -6,10 +6,10 @@ ALL categories here
         <%=category.categoryImage.data.toString('base64')%>">  
     <%}%>
     <p></p>
-    <%=category.name%>
+    Name <a href = "/category/<%=category._id%>"><%=category.name%></a>
     <p></p>
-    <%=category.description%>
+    Description <%=category.description%>
 
-    <a href = "/category/<%=category._id%>"><%=category.name%></a>
+    
     <p></p>
 <%})%>

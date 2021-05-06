@@ -1,7 +1,14 @@
 ALL products of category:<%=category.name%>
 <p></p>
 <%products.forEach(product=>{%>
-    <%=product%>
+    <%if (product.productImage.data){%>
+        <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
+        <%=product.productImage.data.toString('base64')%>">  
+        <%}%>
+        <p></p>
+       Name:  <a href="/products/<%=product._id%>" style="color: blue;"><%=product.name%></a>
+        <p></p>
+       Price <%=product.price%>
     <p></p>
 <%})%>
 
