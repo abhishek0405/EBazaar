@@ -1,7 +1,12 @@
 My Wishlist:
 <p></p>
 <% wishes.forEach(wish => { %>
-    <%= wish %>
+    <%if (wish.productImage.data){%>
+        <img  height="250" width="250" src="data:image/<%=wish.productImage.contentType%>;base64, 
+        <%=wish.productImage.data.toString('base64')%>">  
+    <%}%>
+    <p></p>
+    <a href="/products/<%=wish._id%> "><%= wish.name%></a>
     <form method="POST" action="/wishlist/<%= wish._id %>?_method=DELETE">
         <input name="id" value="<%= wish._id %>" hidden>
         (<input type="submit" value="Delete">)

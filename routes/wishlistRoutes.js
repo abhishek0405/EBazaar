@@ -6,7 +6,7 @@ const isCustomer = require('../middleware/Auth/isCustomer');
 
 //get wishes
 router.get('/', isLoggedin, isCustomer, (req, res) => {
-    Customer.findOne({email: req.userData.email}).exec().then(customer => {
+    Customer.findOne({email: req.userData.email}).populate('wishlist').exec().then(customer => {
         res.render('Product/ShowWishlist', {wishes: customer.wishlist})
     }).catch(error => {
         res.send("not found/system error")
