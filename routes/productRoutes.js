@@ -95,6 +95,19 @@ router.get('/',isLoggedin,(req,res)=>{
             })
     
 })
+
+//get specific product
+router.get('/:id',isLoggedin,(req,res)=>{
+    Product.findById(req.params.id)
+            .exec()
+            .then(foundProduct=>{
+                res.render("Product/ShowProductID",{product:foundProduct});
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    
+})
 //post product
 router.post('/',upload.single('photo'),(req,res)=>{
     
@@ -165,8 +178,12 @@ router.post('/',upload.single('photo'),(req,res)=>{
                                           
                                       })
                                     }
+
+                                    
            
                            }
+
+
                            res.redirect('/seller/home');
                                
                        })

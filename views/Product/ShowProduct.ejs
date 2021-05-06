@@ -13,7 +13,9 @@ ALL PRODUCTS HEREEEE
         <%=product.productImage.data.toString('base64')%>">  
         <%}%>
         <p></p>
-        <%=product%>
+        <a href="/products/<%=product._id%>" style="color: blue;"><%=product.name%></a>
+        <p></p>
+        <%=product.price%>
         <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p>
         <form method="POST"  action="/wishlist">
             <input name="id" value="<%= product._id %>" hidden>

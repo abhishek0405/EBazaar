@@ -1,0 +1,22 @@
+
+
+<%if (product.productImage.data){%>
+    <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
+    <%=product.productImage.data.toString('base64')%>">  
+    <%}%>
+    <p></p>
+   Name: <%=product.name%>
+    <p></p>
+    Price: <%=product.price%>
+    <p></p>
+    Description: <%=product.description%>
+    <p></p>
+    Discount <%=product.discount%>
+    <p></p>
+    stock <%=product.stock%>
+    <p></p>
+    <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p>
+    <form method="POST"  action="/wishlist">
+        <input name="id" value="<%= product._id %>" hidden>
+        (<input type="submit" value="+Wishlist">)
+    </form>
