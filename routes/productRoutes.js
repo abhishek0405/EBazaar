@@ -65,6 +65,22 @@ async function getProducts(query_arr){
 
 })
 
+//add new product route
+router.get('/new',isLoggedin,isSeller,(req,res)=>{
+    console.log("hit");
+    Category.find()
+             .exec()
+             .then(foundCategory=>{
+                res.render('Product/AddProduct',{category:foundCategory,userData:req.userData});
+             })
+             .catch(err=>{
+                 console.log("could not fetch category",err);
+                 res.send("error occcured")
+             })
+    
+   
+})
+
 const fileFilter = (req,file,cb)=>{
     //reject file
     if(file.mimetype==='image/jpeg'||file.mimetype==='image/png'){
@@ -199,20 +215,7 @@ router.post('/',upload.single('photo'),(req,res)=>{
     
 })
 
-//add new product route
-router.get('/new',isLoggedin,isSeller,(req,res)=>{
-    Category.find()
-             .exec()
-             .then(foundCategory=>{
-                res.render('Product/AddProduct',{category:foundCategory,userData:req.userData});
-             })
-             .catch(err=>{
-                 console.log("could not fetch category",err);
-                 res.send("error occcured")
-             })
-    
-   
-})
+
 
 //route to edit product config
 router.get('/edit/:id',isLoggedin,isSeller,(req,res)=>{
