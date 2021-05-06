@@ -47,6 +47,7 @@ async function getProducts(query_arr){
      //STORE KEYWORDS IN COLLECTION IE keyword,array of product ids.
      //for each word in keyword,get the product Ids and render.
     let query_arr = req.body.searchtext.split(" ");
+    query_arr = query_arr.map(word =>word.toLowerCase());
     console.log(query_arr);
     let matchedProducts = await getProducts(query_arr);
 
@@ -134,8 +135,11 @@ router.post('/',upload.single('photo'),(req,res)=>{
                            console.log(keyphrase_arr);
                            
                            for(let word of keyphrase_arr ){
-                               
+                               word = word.toLowerCase();
                                console.log("word is ",word);
+                               //this checks whether string empty or not
+                               if(!(word.replace(/\s/g,"") == "")){
+                            
                                Keyword.find({keyword:word})
                                       .exec()
                                       .then(foundKeyword=>{
@@ -160,6 +164,7 @@ router.post('/',upload.single('photo'),(req,res)=>{
                                           }
                                           
                                       })
+                                    }
            
                            }
                            res.redirect('/seller/home');
