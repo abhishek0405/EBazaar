@@ -6,7 +6,14 @@ const customerSchema = mongoose.Schema({
     phone:{type:String,requried:true},
     password:{type:String,requried:true},
     usertype:{type:String,default:"customer"}, //if undefiend in form then default used
-    wishlist: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}]
+    wishlist: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
+    cart: [{
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product'
+        },
+        count: Number
+    }]
 
    
 })

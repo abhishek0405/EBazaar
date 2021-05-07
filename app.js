@@ -10,6 +10,7 @@ const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const sellerRoutes = require('./routes/sellerRoutes');
 const wishlistRoutes = require('./routes/wishlistRoutes')
+const cartRoutes = require('./routes/cartRoutes')
 const mongoose = require('mongoose');
 const uri = "mongodb+srv://abhishek:"+process.env.DB_KEY+"@cluster0.dfvfh.mongodb.net/EbazaarDB?retryWrites=true&w=majority";
 console.log(uri);
@@ -39,6 +40,7 @@ app.use('/products',productRoutes);
 app.use('/category',categoryRoutes);
 app.use('/seller',sellerRoutes);
 app.use('/wishlist', wishlistRoutes)
+app.use('/cart', cartRoutes)
 app.use((req,res,next)=>{
     const error = new Error('Not found');
     error.status = 404;

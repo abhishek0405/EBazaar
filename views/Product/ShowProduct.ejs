@@ -19,7 +19,11 @@ ALL PRODUCTS HEREEEE
             <input name="id" value="<%= product._id %>" hidden>
             (<input type="submit" value="+Wishlist">)
         </form>
-        
+        <form method="POST"  action="/cart">
+            <input name="id" value="<%= product._id %>" hidden> 
+            Add <input type=number min=1 max=15 value=1 name="count"> to cart
+            (<input type="submit" value="Go">)
+        </form>
 <%})%>
 
 <%-include('../partials/footer')%>

@@ -1,0 +1,19 @@
+Order Summary:
+<p></p>
+<% cartItems.products.forEach(product => { %>
+    <%if (product.productImage.data){%>
+        <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
+        <%=product.productImage.data.toString('base64')%>">  
+    <%}%>
+        <p></p>
+        Name: <%=product.name%>
+        <p></p>
+        Seller: <%=product.seller%>
+        <p></p>
+        Cost: <%=product.price%>
+        <p></p>
+        <hr>
+<% }) %>
+Total: <%=cartItems.total%>
+<p></p>
+<button>Proceed to Payment</button>

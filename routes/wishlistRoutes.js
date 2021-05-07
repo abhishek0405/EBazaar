@@ -36,11 +36,11 @@ router.post('/', isLoggedin, isCustomer, (req, res) => {
     })    
 })
 
-router.delete('/:id', isLoggedin, isCustomer, (req, res) => {
+router.delete('/', isLoggedin, isCustomer, (req, res) => {
     console.log(`DELETE request`)
-    Customer.updateOne({email: req.userData.email}, {$pull: {wishlist: req.params.id}}).exec()
+    Customer.updateOne({email: req.userData.email}, {$pull: {wishlist: req.body.id}}).exec().then(result=>{
         res.send("Deleted yay")
-    .catch(error => {
+    }).catch(error => {
         console.log(error)
         res.send("system error")
     })   
