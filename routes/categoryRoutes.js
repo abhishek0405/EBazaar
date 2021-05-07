@@ -84,6 +84,34 @@ router.post('/',upload.single('photo'),(req,res)=>{
             })
 
 })
+
+//filter products in given category
+
+router.post('/filter',(req,res)=>{
+    console.log(req.body);
+    
+    Product.find({$and:[
+        {
+        category:req.body.category
+        },
+        {
+            price:{$gte:req.body.mini}
+        },
+        {
+            price:{$lte:req.body.maxi}
+        }
+    ]
+        
+        })
+           
+        .exec()
+        .then(foundProducts=>{
+               res.render('Product/ShowFilteredProducts',{products:foundProducts});
+           })
+           .catch(err=>{
+               console.log(err);
+           })
+})
 //view products of specific category
 router.get('/:id',(req,res)=>{
     let categoryId = req.params.id;

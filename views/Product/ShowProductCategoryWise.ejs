@@ -1,4 +1,15 @@
 ALL products of category:<%=category.name%>
+
+Filter here
+<form method="POST" action="/category/filter">
+    <input type="text" placeholder="Minimum Price" name="mini">
+    <input type="text" placeholder="Max Price" name="maxi">
+    <input type="text" value="<%=category._id%>" name ="category" hidden=true>
+    <button type="submit">Filter</button>
+</form>
+
+
+<p></p>
 <p></p>
 <%products.forEach(product=>{%>
     <%if (product.productImage.data){%>

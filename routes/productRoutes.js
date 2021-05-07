@@ -65,6 +65,36 @@ async function getProducts(query_arr){
 
 })
 
+//filter the searched products
+router.post("/filter",isLoggedin,(req,res)=>{
+    console.log(req.body);
+    product_ids = req.body.prod_id.split(",");
+    console.log(product_ids);
+
+    Product.find({$and:[
+        {
+            _id:{$in:product_ids}
+        },
+        {
+            price:{$gte:req.body.mini}
+        },
+        {
+            price:{$lte:req.body.maxi}
+        }
+
+    ]
+
+    })
+    .exec()
+    .then(foundProducts=>{
+        res.render('Product/ShowFilteredProducts',{products:foundProducts})
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+})
+
+
 //add new product route
 router.get('/new',isLoggedin,isSeller,(req,res)=>{
     console.log("hit");

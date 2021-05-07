@@ -36,7 +36,7 @@ router.post('/customer/login',(req,res)=>{
                             })
                             console.log("token is",token);
                             res.cookie('authToken',token);
-                            res.send("logged in yay");
+                            res.redirect('/products')
                             
                         }
                         else{
@@ -82,7 +82,7 @@ router.post('/customer/register',(req,res)=>{
                                 .then(newcustomer=>{
                                     console.log("USER SAVED");
                                     console.log(newcustomer);
-                                    res.send("YAY REGISTERED");
+                                    res.redirect('/customer/login');
                                 })
                                 .catch(err=>{
                                     console.log(err);
