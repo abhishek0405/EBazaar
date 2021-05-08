@@ -6,7 +6,7 @@ const isCustomer = require('../middleware/Auth/isCustomer');
 
 //get cart items
 router.get('/', isLoggedin, isCustomer, (req, res) => {
-    Customer.findOne({email: req.userData.email}).exec().then(customer => {
+    Customer.findOne({email: req.userData.email}).populate('cart.product').exec().then(customer => {
         console.log(customer.cart)
         res.render('Product/ShowCart', {cartItems: customer.cart})
     }).catch(error => {
@@ -77,7 +77,7 @@ router.delete('/', isLoggedin, isCustomer, (req, res) => {
 })
 
 router.get('/bill', isLoggedin, isCustomer, (req, res) => {
-    Customer.findOne({email: req.userData.email}).populate('cart.product').exec().then(customer => {
+    Customer.findOne({email: req.userData.email}).populate('cart.product ').exec().then(customer => {
 
         var filter = []
         var total = 0.0
@@ -92,7 +92,7 @@ router.get('/bill', isLoggedin, isCustomer, (req, res) => {
                 productImage: element.product.productImage
             })
         })
-        res.render('Product/ShowOrderSummary', {cartItems: {products: filter, total: total}})
+        res.render('Product/ShowOrderSummary', {cartItems: {products: filter, total: total},key:process.env.PUBLISHABLE_KEY,Name:req.userData.name})
     }).catch(error => {
         console.log(error)
         res.send("not found/system error")

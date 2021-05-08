@@ -14,11 +14,11 @@ Search results for <%=query%>
         <%=product.productImage.data.toString('base64')%>">  
         <%}%>
         <p></p>
-        <%=product%>
-        <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p>
-        <form method="POST"  action="/wishlist">
-            <input name="id" value="<%= product._id %>" hidden>
-            (<input type="submit" value="+Wishlist">)
-        </form>
+        <p></p>
+        <a href="/products/<%=product._id%>" style="color: blue;"><%=product.name%></a>
+        <p></p>
+        Price <%=product.price%>
+        <p></p>
+        
         
 <%})%>

@@ -16,4 +16,35 @@ Order Summary:
 <% }) %>
 Total: <%=cartItems.total%>
 <p></p>
-<button>Proceed to Payment</button>
+<form action="/payments" method="POST"> 
+    Address:
+    <p></p>
+    Flat <input type="text" name="line1" placeholder="Flat and Building">
+    Postal Code <input type="text" name="postal_code" placeholder="400706">
+   City  <input type="text" name="city" placeholder="Mumbai">
+    State <input type="text" name="state" placeholder="Maharashtra">
+    Country <input type="text" name="country" placeholder="India">
+    <input type="text" value="<%=Name%>" hidden=true name="name">
+    <input type="text" value="<%=cartItems.total*100%>" hidden=true name="bill">
+    <input type="text" value="<%=Name%>'s Order" hidden=true name="description">
+    <p></p>
+    <script
+        src="//checkout.stripe.com/v2/checkout.js"
+        class="stripe-button"
+        data-key="<%= key %>" 
+        data-amount="<%=cartItems.total*100%>" 
+        data-currency="inr" 
+        data-name="<%=Name%>" 
+        data-description="Billing Counter" 
+        data-locale="auto"> 
+        
+        
+
+        </script> 
+        
+    </form> 
+
+
+
+    
+       

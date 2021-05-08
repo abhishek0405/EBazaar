@@ -1,13 +1,20 @@
 My Cart:
 <p></p>
 <% cartItems.forEach(item => { %>
-    <%= item %>
+    <%if (item.product.productImage.data){%>
+        <img  height="250" width="250" src="data:image/<%=item.product.productImage.contentType%>;base64, 
+        <%=item.product.productImage.data.toString('base64')%>">  
+    <%}%>
+    <p></p>
+    Product:<%= item.product.name %> 
+    <p></p>
+    Count:<%=item.count%>
     <form method="POST" action="/cart?_method=DELETE">
-        <input name="id" value="<%= item.product %>" hidden>
+        <input name="id" value="<%= item.product._id %>" hidden>
         (<input type="submit" value="Delete">)
     </form>
     <form method="POST" action="/cart?_method=PATCH">
-        <input name="id" value="<%= item.product %>" hidden>
+        <input name="id" value="<%= item.product._id %>" hidden>
         (Change Quantity: <input type=number min=1 max=15 value= <%= item.count %> name="count">
         <input type="submit" value="Go">)
     </form>

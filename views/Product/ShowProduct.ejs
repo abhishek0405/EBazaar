@@ -11,17 +11,13 @@ ALL PRODUCTS HEREEEE
     <%if (product.productImage.data){%>
         <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
         <%=product.productImage.data.toString('base64')%>">  
-        <%}%>
+    <%}%>
         <p></p>
         <a href="/products/<%=product._id%>" style="color: blue;"><%=product.name%></a>
         <p></p>
-        <%=product.price%>
+        Price <%=product.price%>
         <p></p>
-        <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p>
-        <form method="POST"  action="/wishlist/<%= product._id %>">
-            <!-- <input name="id" value="<%= product._id %>" hidden> -->
-            (<input type="submit" value="+Wishlist">)
-        </form>
+        
         
         
         
