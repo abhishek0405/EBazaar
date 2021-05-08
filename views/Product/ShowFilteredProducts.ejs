@@ -1,0 +1,17 @@
+Filter Results
+<p></p>
+<%products.forEach(product=>{%>
+    <%if (product.productImage.data){%>
+        <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
+        <%=product.productImage.data.toString('base64')%>">  
+    <%}%>
+        <p></p>
+        <a href="/products/<%=product._id%>" style="color: blue;"><%=product.name%></a>
+        <%=product.price%>
+        <p></p>
+        
+        
+        
+<%})%>
+
+<%-include('../partials/footer')%>

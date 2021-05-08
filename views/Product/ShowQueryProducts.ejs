@@ -1,3 +1,11 @@
+Filter here
+<%prod_arr = products.map(it=>it._id)%>
+<form method="POST" action="/products/filter">
+    <input type="text" placeholder="Minimum Price" name="mini">
+    <input type="text" placeholder="Max Price" name="maxi">
+    <input type="text" value="<%=prod_arr%>" name ="prod_id" hidden=true>
+    <button type="submit">Filter</button>
+</form>
 Search results for <%=query%>
 <p></p>
 <%products.forEach(product=>{%>

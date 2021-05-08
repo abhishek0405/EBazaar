@@ -6,7 +6,7 @@ const isCustomer = require('../middleware/Auth/isCustomer');
 
 //get wishes
 router.get('/', isLoggedin, isCustomer, (req, res) => {
-    Customer.findOne({email: req.userData.email}).exec().then(customer => {
+    Customer.findOne({email: req.userData.email}).populate('wishlist').exec().then(customer => {
         res.render('Product/ShowWishlist', {wishes: customer.wishlist})
     }).catch(error => {
         res.send("not found/system error")
@@ -14,12 +14,12 @@ router.get('/', isLoggedin, isCustomer, (req, res) => {
 })
 
 //add/delete wishes
-router.post('/', isLoggedin, isCustomer, (req, res) => {
+router.post('/:id', isLoggedin, isCustomer, (req, res) => {
     console.log(`POST request ${JSON.stringify(req.body)}`)
     Customer.findOne({email: req.userData.email}).exec().then(customer => {
         Customer.updateOne(
             {_id: customer._id},
-            {$push: {wishlist: req.body.id}}   //TODO: what if it already exists, increase count?
+            {$push: {wishlist: req.params.id}}   //TODO: what if it already exists, increase count?
         ).exec().then(result => {
             res.send("yay added")
             console.log(`added wishlist: ${JSON.stringify(result)}`)
@@ -36,9 +36,9 @@ router.post('/', isLoggedin, isCustomer, (req, res) => {
     })    
 })
 
-router.delete('/', isLoggedin, isCustomer, (req, res) => {
+router.delete('/:id', isLoggedin, isCustomer, (req, res) => {
     console.log(`DELETE request`)
-    Customer.updateOne({email: req.userData.email}, {$pull: {wishlist: req.body.id}}).exec().then(result=>{
+    Customer.updateOne({email: req.userData.email}, {$pull: {wishlist: req.params.id}}).exec().then(result=>{
         res.send("Deleted yay")
     }).catch(error => {
         console.log(error)

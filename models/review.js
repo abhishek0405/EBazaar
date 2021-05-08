@@ -7,6 +7,6 @@ const reviewSchema = mongoose.Schema({
     review: String,
 })
 
-reviewSchema.index({'product': 1, 'customerEmail': 1}, {unique: true})
+// reviewSchema.index({'product': 1, 'customerEmail': 1}, {unique: true})
 
 module.exports = mongoose.model('Review', reviewSchema)

@@ -47,6 +47,7 @@ async function getProducts(query_arr){
      //STORE KEYWORDS IN COLLECTION IE keyword,array of product ids.
      //for each word in keyword,get the product Ids and render.
     let query_arr = req.body.searchtext.split(" ");
+    query_arr = query_arr.map(word =>word.toLowerCase());
     console.log(query_arr);
     let matchedProducts = await getProducts(query_arr);
 
@@ -62,6 +63,52 @@ async function getProducts(query_arr){
     
    
 
+})
+
+//filter the searched products
+router.post("/filter",isLoggedin,(req,res)=>{
+    console.log(req.body);
+    product_ids = req.body.prod_id.split(",");
+    console.log(product_ids);
+
+    Product.find({$and:[
+        {
+            _id:{$in:product_ids}
+        },
+        {
+            price:{$gte:req.body.mini}
+        },
+        {
+            price:{$lte:req.body.maxi}
+        }
+
+    ]
+
+    })
+    .exec()
+    .then(foundProducts=>{
+        res.render('Product/ShowFilteredProducts',{products:foundProducts})
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+})
+
+
+//add new product route
+router.get('/new',isLoggedin,isSeller,(req,res)=>{
+    console.log("hit");
+    Category.find()
+             .exec()
+             .then(foundCategory=>{
+                res.render('Product/AddProduct',{category:foundCategory,userData:req.userData});
+             })
+             .catch(err=>{
+                 console.log("could not fetch category",err);
+                 res.send("error occcured")
+             })
+    
+   
 })
 
 const fileFilter = (req,file,cb)=>{
@@ -91,6 +138,19 @@ router.get('/',isLoggedin,(req,res)=>{
             .catch(err=>{
                 console.log("Could not fetch products",err);
                 res.status(500).send("Error while adding product.Try again");
+            })
+    
+})
+
+//get specific product
+router.get('/:id',isLoggedin,(req,res)=>{
+    Product.findById(req.params.id)
+            .exec()
+            .then(foundProduct=>{
+                res.render("Product/ShowProductID",{product:foundProduct});
+            })
+            .catch(err=>{
+                console.log(err);
             })
     
 })
@@ -134,8 +194,11 @@ router.post('/',upload.single('photo'),(req,res)=>{
                            console.log(keyphrase_arr);
                            
                            for(let word of keyphrase_arr ){
-                               
+                               word = word.toLowerCase();
                                console.log("word is ",word);
+                               //this checks whether string empty or not
+                               if(!(word.replace(/\s/g,"") == "")){
+                            
                                Keyword.find({keyword:word})
                                       .exec()
                                       .then(foundKeyword=>{
@@ -160,8 +223,13 @@ router.post('/',upload.single('photo'),(req,res)=>{
                                           }
                                           
                                       })
+                                    }
+
+                                    
            
                            }
+
+
                            res.redirect('/seller/home');
                                
                        })
@@ -177,20 +245,7 @@ router.post('/',upload.single('photo'),(req,res)=>{
     
 })
 
-//add new product route
-router.get('/new',isLoggedin,isSeller,(req,res)=>{
-    Category.find()
-             .exec()
-             .then(foundCategory=>{
-                res.render('Product/AddProduct',{category:foundCategory,userData:req.userData});
-             })
-             .catch(err=>{
-                 console.log("could not fetch category",err);
-                 res.send("error occcured")
-             })
-    
-   
-})
+
 
 //route to edit product config
 router.get('/edit/:id',isLoggedin,isSeller,(req,res)=>{
