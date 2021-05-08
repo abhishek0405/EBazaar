@@ -23,7 +23,7 @@ PHASE 2
 
 
 PHASE 3
-->Add items to cart ->PENDING
-->Modify Quantity in the cart and show the final bill->PENDING (add, delete, change quantity, bill, proceed to payement)
+->Add items to cart ->DONE
+->Modify Quantity in the cart and show the final bill->DONE
 ->Proceed to payment gateway->PENDING
 

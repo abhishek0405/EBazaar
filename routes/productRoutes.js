@@ -145,6 +145,7 @@ router.get('/',isLoggedin,(req,res)=>{
 //get specific product
 router.get('/:id',isLoggedin,(req,res)=>{
     Product.findById(req.params.id)
+            .populate('seller')
             .exec()
             .then(foundProduct=>{
                 res.render("Product/ShowProductID",{product:foundProduct});

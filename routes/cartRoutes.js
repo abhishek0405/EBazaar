@@ -31,7 +31,7 @@ router.post('/', isLoggedin, isCustomer, (req, res) => {
             res.send("system error")
         })
     }).then(result => {
-        res.send("yay added")
+        res.redirect('/cart');
         console.log(`added cart: ${JSON.stringify(result)}`)
     }).catch(error => {
         console.log(error)

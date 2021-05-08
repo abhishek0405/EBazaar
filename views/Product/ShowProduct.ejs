@@ -13,20 +13,17 @@ ALL PRODUCTS HEREEEE
         <%=product.productImage.data.toString('base64')%>">  
         <%}%>
         <p></p>
-        <%=product%>
+        <a href="/products/<%=product._id%>" style="color: blue;"><%=product.name%></a>
+        <p></p>
+        <%=product.price%>
+        <p></p>
         <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p>
         <form method="POST"  action="/wishlist/<%= product._id %>">
             <!-- <input name="id" value="<%= product._id %>" hidden> -->
             (<input type="submit" value="+Wishlist">)
         </form>
-        <form method="POST"  action="/cart">
-            <input name="id" value="<%= product._id %>" hidden> 
-            Add <input type=number min=1 max=15 value=1 name="count"> to cart
-            (<input type="submit" value="Go">)
-        </form>
-        <a href="/products/<%=product._id%>" style="color: blue;"><%=product.name%></a>
-        <p></p>
-        <%=product.price%>
+        
+        
         
         
 <%})%>
