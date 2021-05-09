@@ -4,6 +4,7 @@ const Customer = require('../models/customer');
 const Seller = require('../models/seller');
 const isLoggedIn = require('../middleware/Auth/isLoggedin');
 const isSeller = require('../middleware/Auth/isSeller');
+const isLoggedin = require('../middleware/Auth/isLoggedin');
 router.get('/home',isLoggedIn,isSeller,(req,res)=>{
     Seller.findById(req.userData.id)
           .populate('myProducts')
@@ -18,6 +19,21 @@ router.get('/home',isLoggedIn,isSeller,(req,res)=>{
               res.send("Unexpected err");
           })
     
+})
+
+router.get('/orders',isLoggedin,isSeller,(req,res)=>{
+  console.log(req.userData.id)
+  Seller.findById(req.userData.id)
+
+        .exec()
+        .then(foundSeller=>{
+          res.render("Seller/orders.ejs",{orders:foundSeller.myOrders.reverse()})
+        })
+        .catch(Err=>{
+          console.log(Err);
+        })
+  
+  
 })
 
 

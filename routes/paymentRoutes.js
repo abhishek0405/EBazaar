@@ -1,5 +1,9 @@
 const express  = require('express');
 const mongoose = require('mongoose');
+const Seller = require('../models/seller');
+const Product = require('../models/product');
+const isLoggedin = require('../middleware/Auth/isLoggedin');
+const isCustomer = require('../middleware/Auth/isCustomer');
 const router = express.Router();
 const stripe = require('stripe')(process.env.SECRET_KEY)
 
@@ -8,10 +12,25 @@ router.get('/',(req,res)=>{
     res.render("Payment/MakePayment",{key:process.env.PUBLISHABLE_KEY});
 })
 
-router.post('/', function(req, res){ 
+router.post('/',isLoggedin,isCustomer,function(req, res){ 
 
-    // Moreover you can take more details from user 
-    // like Address, Name, etc from form 
+    let orderDetails = JSON.parse(req.body.orderDetails);
+    console.log(orderDetails)
+    //customer and adrress obj
+    console.log(req.userData);
+    let customerID=req.userData.id;
+    console.log("customer is",customerID);
+    let address= {
+        line1: req.body.line1,
+        postal_code: req.body.postal_code,
+        city: req.body.city,
+        state: req.body.state,
+        country: req.body.country,
+      }
+    
+
+
+    
     stripe.customers.create({ 
         email: req.body.stripeEmail, 
         source: req.body.stripeToken, 
@@ -36,8 +55,37 @@ router.post('/', function(req, res){
         }); 
     }) 
     .then((charge) => { 
+
+        for (let key in orderDetails) {
+            console.log(key);
+            Seller.findById(key)
+                  .exec()
+                  .then(foundSeller=>{
+                    for(let productObj of orderDetails[key]){
+                        console.log(productObj)
+                    
+                        let orderObj={
+                            customer:customerID,
+                            address:address,
+                            products:productObj.product,
+                            count:productObj.count,
+                            status:"Ordered"
+                
+                        }
+                        console.log("order obj")
+                        console.log(orderObj)
+                        foundSeller.myOrders.push(orderObj);
+                        foundSeller.save();
+                        console.log("DONEE")
+                    }
+                        
+                  })
+        }
+                  
+        
         res.send("Success") // If no error occurs 
     }) 
+
     .catch((err) => { 
         res.send(err)    // If some error occurs 
     }); 

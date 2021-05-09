@@ -1,5 +1,6 @@
 Order Summary:
 <p></p>
+
 <% cartItems.products.forEach(product => { %>
     <%if (product.productImage.data){%>
         <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
@@ -24,10 +25,12 @@ Total: <%=cartItems.total%>
    City  <input type="text" name="city" placeholder="Mumbai">
     State <input type="text" name="state" placeholder="Maharashtra">
     Country <input type="text" name="country" placeholder="India">
-    
+    <p></p>
+    <%=orderDetails%>
     <input type="text" value="<%=Name%>" hidden=true name="name">
     <input type="text" value="<%=cartItems.total*100%>" hidden=true name="bill">
     <input type="text" value="<%=Name%>'s Order" hidden=true name="description">
+    <input type="text" value="<%=orderDetails%>" hidden=true name="orderDetails">
     <p></p>
     <script
         src="//checkout.stripe.com/v2/checkout.js"

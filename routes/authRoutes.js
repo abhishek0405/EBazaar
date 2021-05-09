@@ -26,6 +26,7 @@ router.post('/customer/login',(req,res)=>{
                             console.log("password matches");
                             //inside .sign put details you might need for current user(dont put password!)
                             const token = jwt.sign({
+                                id:foundCustomer[0]._id,
                                 email:foundCustomer[0].email,
                                 name:foundCustomer[0].name,
                                 usertype:foundCustomer[0].usertype
@@ -180,13 +181,14 @@ router.post('/seller/register',(req,res)=>{
                         phone : req.body.phone,
                         password:hash,
                         usertype:"seller",
-                        myProducts:[]
+                        myProducts:[],
+                        myOrders:[]
                     })
                     user.save()
                         .then(newseller=>{
                             console.log("USER SAVED");
                             console.log(newseller);
-                            res.send("YAY REGISTERED");
+                            res.redirect('/seller/login')
                         })
                         .catch(err=>{
                             console.log(err);

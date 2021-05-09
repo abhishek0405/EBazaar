@@ -81,8 +81,23 @@ router.get('/bill', isLoggedin, isCustomer, (req, res) => {
 
         var filter = []
         var total = 0.0
-        
+        //maps seller to array of produucts
+        let orderDetails={}
         customer.cart.forEach(element => {
+            if(orderDetails.hasOwnProperty(element.product.seller)){
+                orderDetails[element.product.seller].push({
+                    product:element.product._id,
+                    count:element.count
+                })
+            }
+            else{
+                orderDetails[element.product.seller]=[{
+                    product:element.product._id,
+                    count:element.count
+                }]
+            }
+            
+            
             var cost = element.count*(element.product.price-element.product.discount)
             total += cost
             filter.push({
@@ -92,7 +107,9 @@ router.get('/bill', isLoggedin, isCustomer, (req, res) => {
                 productImage: element.product.productImage
             })
         })
-        res.render('Product/ShowOrderSummary', {cartItems: {products: filter, total: total},key:process.env.PUBLISHABLE_KEY,Name:req.userData.name})
+        console.log(orderDetails);
+        
+        res.render('Product/ShowOrderSummary', {cartItems: {products: filter, total: total},key:process.env.PUBLISHABLE_KEY,Name:req.userData.name,orderDetails:JSON.stringify(orderDetails)})
     }).catch(error => {
         console.log(error)
         res.send("not found/system error")
