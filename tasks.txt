@@ -26,5 +26,5 @@ PHASE 3
 ->Add items to cart ->DONE
 ->Modify Quantity in the cart and show the final bill->DONE
 ->Proceed to payment gateway->DONE
-->Update seller's portal to show orders->PENDING
+->Update seller's portal to show orders->DONE
 
