@@ -28,3 +28,18 @@ PHASE 3
 ->Proceed to payment gateway->DONE
 ->Update seller's portal to show orders->DONE
 
+
+CATEGORIES
+
+['Footwear', 'Home Furnishing', 'Pens & Stationery',
+       'Kitchen & Dining', 'Automotive', 'Clothing',
+       'Mobiles & Accessories', 'Computers', 'Watches', 'Pet Supplies',
+       'Jewellery', 'Tools & Hardware', 'Baby Care', 'Sports & Fitness',
+       'Gaming', 'Cameras & Accessories', 'Furniture', 'Home Improvement']
+
+
+Products added:
+DMART:
+0->50
+ALL MART
+51->100

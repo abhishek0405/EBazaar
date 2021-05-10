@@ -12,6 +12,7 @@ const sellerRoutes = require('./routes/sellerRoutes');
 const wishlistRoutes = require('./routes/wishlistRoutes')
 const cartRoutes = require('./routes/cartRoutes');
 const paymentRoutes = require("./routes/paymentRoutes")
+
 const mongoose = require('mongoose');
 
 const uri = "mongodb+srv://abhishek:"+process.env.DB_KEY+"@cluster0.dfvfh.mongodb.net/EbazaarDB?retryWrites=true&w=majority";
@@ -35,6 +36,7 @@ app.use(methodOverride("_method"));
 app.use(morgan('dev'));
 app.set("view engine","ejs");
 app.get('/',(req,res)=>{
+    
     res.render("home");
 })
 app.use(authRoutes); 

@@ -12,7 +12,7 @@ router.get('/',(req,res)=>{
     res.render("Payment/MakePayment",{key:process.env.PUBLISHABLE_KEY});
 })
 
-router.post('/',isLoggedin,isCustomer,function(req, res){ 
+router.post('/',isLoggedin,isCustomer, function(req, res){ 
 
     let orderDetails = JSON.parse(req.body.orderDetails);
     console.log(orderDetails)
@@ -75,7 +75,7 @@ router.post('/',isLoggedin,isCustomer,function(req, res){
                         console.log("order obj")
                         console.log(orderObj)
                         foundSeller.myOrders.push(orderObj);
-                        foundSeller.save();
+                        let payment =  foundSeller.save();
                         console.log("DONEE")
                     }
                         

@@ -104,7 +104,8 @@ router.get('/bill', isLoggedin, isCustomer, (req, res) => {
                 name: element.product.name,
                 seller: element.product.seller,
                 price: cost,
-                productImage: element.product.productImage
+                productImage: element.product.productImage,
+                imageURL:element.product.imageURL
             })
         })
         console.log(orderDetails);

@@ -3,6 +3,8 @@
 <%if (product.productImage.data){%>
     <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
     <%=product.productImage.data.toString('base64')%>">  
+    <%} else if(product.imageURL){%>
+        <img  height="250" width="250" src="<%=product.imageURL%>"> 
     <%}%>
     <p></p>
    Name: <%=product.name%>

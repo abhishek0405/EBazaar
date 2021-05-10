@@ -4,7 +4,9 @@ My Cart:
     <%if (item.product.productImage.data){%>
         <img  height="250" width="250" src="data:image/<%=item.product.productImage.contentType%>;base64, 
         <%=item.product.productImage.data.toString('base64')%>">  
-    <%}%>
+        <%} else if(item.product.imageURL){%>
+            <img  height="250" width="250" src="<%=item.product.imageURL%>"> 
+        <%}%>
     <p></p>
     Product:<%= item.product.name %> 
     <p></p>

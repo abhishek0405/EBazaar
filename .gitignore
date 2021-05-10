@@ -106,3 +106,6 @@ dist
 
 #Flush DB file
 flushDB.js
+
+#populate DB file
+populateDB.js
