@@ -27,19 +27,6 @@ PHASE 3
 ->Modify Quantity in the cart and show the final bill->DONE
 ->Proceed to payment gateway->DONE
 ->Update seller's portal to show orders->DONE
+->Integrate Reccomendation System->DONE
 
 
-CATEGORIES
-
-['Footwear', 'Home Furnishing', 'Pens & Stationery',
-       'Kitchen & Dining', 'Automotive', 'Clothing',
-       'Mobiles & Accessories', 'Computers', 'Watches', 'Pet Supplies',
-       'Jewellery', 'Tools & Hardware', 'Baby Care', 'Sports & Fitness',
-       'Gaming', 'Cameras & Accessories', 'Furniture', 'Home Improvement']
-
-
-Products added:
-DMART:
-0->50
-ALL MART
-51->100
