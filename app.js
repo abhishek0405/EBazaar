@@ -14,7 +14,7 @@ const cartRoutes = require('./routes/cartRoutes');
 const paymentRoutes = require("./routes/paymentRoutes")
 
 const mongoose = require('mongoose');
-
+const Product = require("./models/product.js")
 const uri = "mongodb+srv://abhishek:"+process.env.DB_KEY+"@cluster0.dfvfh.mongodb.net/EbazaarDB?retryWrites=true&w=majority";
 console.log(uri);
 mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true})
@@ -31,10 +31,12 @@ app.use(
     })
 );
 app.use(methodOverride("_method"));
-  
+
+
 
 app.use(morgan('dev'));
 app.set("view engine","ejs");
+
 app.get('/',(req,res)=>{
     
     res.render("home");

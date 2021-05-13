@@ -31,3 +31,22 @@
         Add <input type=number min=1 max=15 value=1 name="count"> to cart
         (<input type="submit" value="Go">)
     </form>
+
+
+Similar products
+<p></p>
+
+<%matchedProducts.forEach(product=>{%>
+    <a href="/products/<%=product._id%>"><%=product.name%></a>
+    <p></p>
+    <%if (product.productImage.data){%>
+        <img  height="250" width="250" src="data:image/<%=product.productImage.contentType%>;base64, 
+        <%=product.productImage.data.toString('base64')%>">  
+        <%} else if(product.imageURL){%>
+            <img  height="250" width="250" src="<%=product.imageURL%>"> 
+        <%}%>
+        <p></p>
+    
+   
+
+   <%})%>

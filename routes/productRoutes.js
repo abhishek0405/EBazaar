@@ -15,6 +15,7 @@ const fs   = require('fs');
 const path = require('path');
 const multer = require('multer');
 const async = require('async');
+const ContentBasedRecommender = require('content-based-recommender')
 const storage = multer.diskStorage({ 
     destination: (req, file, cb) => { 
         cb(null, 'uploads/products') 
@@ -25,7 +26,25 @@ const storage = multer.diskStorage({
     } 
 }); 
 const uploadsPath = path.join(__dirname,'../');
-
+const recommender = new ContentBasedRecommender({
+    minScore: 0.1,
+    maxSimilarDocuments: 10
+  });
+Product.find({})
+         .then(foundProducts=>{
+             let newProducts = foundProducts.map(ele=>{
+                 const obj={}
+                 obj['id'] = ele._id;
+                 obj['content'] = ele.description;
+                 return obj;
+             });
+             
+            const documents = newProducts;
+            
+            console.log("training");
+            recommender.train(documents);
+            console.log("trained");
+         })
 
 async function getProducts(query_arr){
     let matchedProducts=[];
@@ -144,17 +163,30 @@ router.get('/',isLoggedin,(req,res)=>{
 
 //get specific product
 router.get('/:id',isLoggedin,(req,res)=>{
-    Product.findById(req.params.id)
-            .populate('seller')
-            .exec()
-            .then(foundProduct=>{
-                res.render("Product/ShowProductID",{product:foundProduct});
-            })
-            .catch(err=>{
-                console.log(err);
-            })
-    
-})
+            
+        //get top 10 similar items to document 1000002
+        const similarProducts= recommender.getSimilarDocuments(req.params.id, 0, 10);
+        const productIds = similarProducts.map(ele=>ele.id);
+        Product.find({"_id":{"$in":productIds}})
+                .then(matchedProducts=>{
+                    //console.log((matchedProducts));
+                    Product.findById(req.params.id)
+                    .populate('seller')
+                    .exec()
+                    .then(foundProduct=>{
+                        console.log(recommender);
+                        res.render("Product/ShowProductID",{product:foundProduct,matchedProducts:matchedProducts.reverse()});
+                    })
+                    .catch(err=>{
+                        console.log(err);
+                        })
+                })
+
+        
+    })
+       
+        
+
 //post product
 router.post('/',upload.single('photo'),(req,res)=>{
     
