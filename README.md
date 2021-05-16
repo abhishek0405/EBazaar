@@ -14,6 +14,7 @@ We hence aim to build is a full stack E-Commerce Application where even local se
 7. Adding products to our wishlist.
 8. Add/edit options for our cart.
 9. Payment Gateway to make quick payments.
+10. Recommendation system to suggest similar products.
 
 ### Our Tech Stack.
 UI Design: Figma
@@ -34,8 +35,10 @@ Database: MongoDB.
 3.Build a mobile application for the same.
 <p>
 ### How to run it
+ <p>
 - [x] Clone the repository to your local directory
- - `git clone https://github.com/abhishek0405/EBazaar.git`
+ <p>
+- `git clone https://github.com/abhishek0405/EBazaar.git`
 
 - [x] Open cmd and cd to the same directory.
 - [x] Run "npm install".
