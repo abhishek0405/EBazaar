@@ -1,0 +1,89 @@
+
+
+.inputProduct {
+    position: relative;
+    left: 3px;
+    top: 10px;
+}
+
+.inputElement {
+    border: 0;
+    width: 70%;
+}
+
+.navbar {
+    height: 90px;
+    background-color: #E5E5E5; 
+}
+
+.elementNavbar {
+    position: relative;
+    width: 602px;
+    height: 56.71px;
+    left: 278px;
+    bottom: 5px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.productSubmitButton {
+    position: relative;
+    left: 500px;
+    bottom: 29px;
+}
+
+.top-img-Main-Page {
+    position: absolute;
+    width: 219px;
+    height: 43.84px;
+    left: 23px;
+    top: 17px; 
+}
+
+.buttonFormat {
+    position: relative;
+    left: 310px;
+    width: 150px;
+    height: 56.71px;
+    bottom: 6px;
+    border-radius: 10px;
+    background-color: none;
+}
+
+.allElements {
+    position: relative;
+    margin: auto 0 auto 0;
+}
+
+.cart-img {
+    position: absolute;
+    width: 46px;
+    height: 52.17px;
+    left: 1060px;
+    top: 13px;
+}
+
+.AccountButton {
+    position: absolute; 
+    left: 1170px;
+    top: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.sign-out-img  {
+    position:absolute;
+    width: 30px;
+    height: 30px;
+    left: 1350px;
+    top: 25px;
+}
+
+
+.nav-bar-text:hover {
+    color: #BA1414;
+}

@@ -1,0 +1,336 @@
+.navbartop-back{
+    position: absolute;
+    width: 63px;
+    height: 39px;
+    left: 1354px;
+    top: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    color: #000000;
+}
+
+.top-img{
+    position: absolute;
+    width: 219px;
+    height: 43.84px;
+    left: 23px;
+    top: 28px; 
+}
+
+.other-options{
+    position: absolute;
+    left: 82.36%;
+    right: 2.92%;
+    top: 13.77%;
+    bottom: 75.68%;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
+    text-decoration-line: underline;
+    color: #118361;
+}
+
+.main-sign-up-box{
+    position: absolute;
+    left: 29.1%;
+    right: 29.17%;
+    top: 21.39%;
+    bottom: 22.17%;
+    
+}
+
+.sign-up-properties{
+    background: #FFFFFF;
+    border: 1px solid #579696;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    height: fit-content;
+}
+
+.main-heading{
+    position: relative;
+    top : 15px;
+    left : 30px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 80px;
+    color: #000000;
+}
+
+.first-subheading{
+    position: relative;
+    left : 30px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 33px;
+}
+
+.box-class{
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: auto;
+    width: 90%;
+}
+
+.additional-text{
+    position: relative;
+    left: 30px;  
+}
+
+.final-button{
+    position: relative;
+    bottom: 20px;
+    margin: auto;
+    width: 90%;
+    left: 30px;
+    background: #19B687;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px; 
+    font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+}
+
+.dont-have-account{
+    position: relative;
+    bottom: 20px;
+    margin: auto;
+    width: 90%;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 46px;
+    text-decoration: none;
+    color: #19B687;
+    text-align:center
+}
+
+.main-sign-up-box-sign-up-dimensions{
+    position: absolute;
+    left: 29.1%;
+    right: 29.17%;
+    top: 20.9%;
+    bottom: 13.67%;
+}
+
+.user-img{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 78px;
+    top: 213px;
+}
+
+.title-description{
+    position: absolute;
+    left: 396px;
+    top: 238px;
+}
+
+.Top-Header{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 75px;
+}
+
+.Description-Header{
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+table{
+    border-collapse: separate;
+    border-spacing: 40px 60px;
+    position: absolute;
+    margin-left: 60px;
+    margin-right: 60px;
+    width: 90%;
+    top: 511px;
+}
+
+.Option-Table{
+    margin:auto;
+    width: 200px;
+    height: 80px;
+    background: #E7E4BB;
+    border-radius: 5px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 54px;
+    text-align: center;
+}
+
+.wishlist-title{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 90px;
+    text-align: center;
+}
+
+.common-container{
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 95%;
+}
+
+.wishlist-container{
+    margin: auto;
+    width: 1395px;
+    height: 266px;
+}
+
+.wishlist-inside-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.wishlist-image{
+    width: 215px;
+    height: 215px;
+    margin: 30px;
+}
+
+.item-description{
+    width: 669px;
+    height: 159px;
+    margin: 40px;
+    margin-left: 80px;
+}
+
+.button-text{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px; 
+    color: #FFFFFF;
+}
+
+.wishlist-add{
+    background: #19B687;
+    border-radius: 30px;
+    width: 250px;
+    height: 54.98px;
+    margin : 20px 20px 20px 40px;
+}
+
+.wishlist-delete{
+    width: 250px;
+    height: 54.98px;
+    background: #EF6363;
+    border-radius: 30px;
+    margin : 20px 20px 20px 40px;
+}
+
+
+.wishlist-item-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.payment-container{
+    width: 1347px;
+    height: 65px;
+    margin: auto;
+    width: 95%;
+}
+
+.payment-content{
+    display: flex;
+    margin: 10px;
+}
+
+.payment-method{
+    display: flex;
+    flex-direction: column;
+    margin : 5px 10px 10px 10px;
+    width: 1150px;
+    height: 52px;
+}
+
+.payment-details-button{
+    width: 128px;
+    height: 39.51px;
+    background: #D5C076;
+    border-radius: 5px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 37px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#order-des-title{
+    font-weight: lighter;
+}
+
+.order-desc{
+    background: #FFFFFF;
+    border: 2px solid #19B687;
+    box-sizing: border-box;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
+    color: #19B687;
+}
+
+.order-description-brief{
+    width: 1100px;
+    height: 166px;
+    margin: 30px;
+}
+
+.order-details-status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.my-order-desc-basic{
+    display: flex;
+    flex-direction: row;
+}
+
+.view-order-details-button{
+    width: 170px;
+    height: 41.18px;
+    background: #D5C076;
+    border-radius: 5px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+
+
+

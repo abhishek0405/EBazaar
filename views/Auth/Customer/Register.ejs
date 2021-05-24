@@ -1,4 +1,70 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Sign Up</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles-nav.css">
+</head>
+<body>
+    <nav class = "navbar navbar-expand-lg" style="background-color: white;">
+        <div class = "navbar navbar-header">
+            <img src="/img/Logo.png" alt="Logo-Website" class="top-img">
+        </div>
+        <ul class="navbar-nav">
+            <li class="navbartop-back">Back</li>
+        </ul>
+    </nav>
+
+    <div class="other-options">
+        <a href="/seller/register">
+            <p>Are you a seller?<br>
+            Click Here to<br>
+            Go to Seller Portal</p>
+        </a>
+    </div>
+
+    <div class="main-sign-up-box-sign-up-dimensions sign-up-properties">
+
+        <div class="container ">
+            <span class="main-heading ">Sign Up | Customer</span><br><br>
+        <form method = "POST" action="/customer/register">
+            <div class="form-group">
+              <label class="first-subheading" for="exampleInputEmail1">Enter Full Name:</label>
+              <input type = "text" placeholder="James" name="name" class="form-control box-class">
+            </div><br>
+            <div class="form-group">
+                <label class="first-subheading" for="exampleInputEmail1">Enter Phone:</label>
+                <input type="text" class="form-control box-class" name="phone" placeholder="Enter Phone :">
+            </div><br>
+            <div class="form-group">
+                <label class="first-subheading">Enter Email:</label>
+                <input name="email" class="form-control box-class" type = "email" placeholder="xyz@domainname.com" aria-describedby="emailHelp">
+            </div><br>
+            <div class="form-group">
+              <label class="first-subheading" for="exampleInputPassword1">Enter Password:</label>
+              <input type="password" class="form-control box-class" id="exampleInputPassword1" placeholder="Password" name="password">
+            </div><br><br>
+            <button type="submit" class="btn btn-primary final-button">Submit</button>
+          </form><br>
+          <!-- <p style="text-align:center">
+          <a href="#" class="dont-have-account">I already have an account</a>
+        </p> -->
+        </div>   
+    </div> 
+    <div id="message">
+
+    </div>
+    <script src="/scripts/CustomerReg.js"></script>  
+</body>
+</html>
+
+<!-- <html>
 <head></head>
 Welcome to customer registration
 <body>
@@ -21,6 +87,4 @@ Welcome to customer registration
     
 
 </form>
-<!--<script src="/scripts/CustomerReg.js"></script> -->
-</body>
-</html>
+<script src="/scripts/CustomerReg.js"></script> -->

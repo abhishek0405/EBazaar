@@ -14,12 +14,12 @@ router.get('/', isLoggedin, isCustomer, (req, res) => {
 })
 
 //add/delete wishes
-router.post('/:id', isLoggedin, isCustomer, (req, res) => {
+router.post('/', isLoggedin, isCustomer, (req, res) => {
     console.log(`POST request ${JSON.stringify(req.body)}`)
     Customer.findOne({email: req.userData.email}).exec().then(customer => {
         Customer.updateOne(
             {_id: customer._id},
-            {$push: {wishlist: req.params.id}}   //TODO: what if it already exists, increase count?
+            {$push: {wishlist: req.body.id}}   //TODO: what if it already exists, increase count?
         ).exec().then(result => {
             res.send("yay added")
             console.log(`added wishlist: ${JSON.stringify(result)}`)
