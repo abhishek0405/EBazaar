@@ -1,0 +1,21 @@
+.all-Products-item-buttons{
+    position: absolute;
+    bottom: 25px;
+    left: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Filters{
+    position: relative;
+}
+
+.text-filter{
+    position: relative;
+}
+
+.filter-elements{
+    display: flex;
+    justify-content: center;
+}

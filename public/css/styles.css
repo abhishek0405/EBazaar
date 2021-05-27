@@ -181,8 +181,7 @@ table{
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    font-size: 60px;
-    line-height: 90px;
+    font-size: 48px;
     text-align: center;
 }
 
@@ -213,11 +212,11 @@ table{
 }
 
 .item-description{
-    width: 669px;
-    height: 159px;
-    margin: 40px;
-    margin-left: 80px;
-}
+    position: relative;
+    width: 50%;
+    margin-top: 40px;
+    margin-left: 20px;
+    }
 
 .button-text{
     font-family: Poppins;
@@ -242,6 +241,11 @@ table{
     background: #EF6363;
     border-radius: 30px;
     margin : 20px 20px 20px 40px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
 }
 
 
@@ -329,6 +333,94 @@ table{
     font-size: 27px;
     text-align: center;
     color: #FFFFFF;
+}
+
+.elementNavbar{
+    position: relative;
+    width: 602px;
+    height: 56.71px;
+    left: 278px;
+    
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.all-products-container{
+    display: flex;
+  flex-wrap: wrap;
+}
+
+.allProductsContainerMain{
+    position: relative;
+    width: 310px;
+    height: 520px;
+    margin: 20px;
+}
+
+.ReviewContainer{
+    position: relative;
+    width: 310px;
+    height: 320px;
+    margin: 20px;
+    border-style: solid;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}
+
+.allProducts-Image{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-top: 20px;
+    
+    border-radius: 10px;
+}
+
+.allProducts-add{
+    background: #19B687;
+    border-radius: px;
+    width: 200px;
+    height: 54.98px;
+    margin : auto;
+}
+
+.all-products-inside-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.review-class{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+}
+
+.review-button{
+    position: relative;
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.reviews-box{
+    width: 90%;
+    height: fit-content;
+    margin:auto;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+    border-style: solid;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 

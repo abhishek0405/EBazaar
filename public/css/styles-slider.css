@@ -1,0 +1,36 @@
+.ui-slider .ui-btn-inner {
+    padding: 4px 0 0 0 !important;
+}
+ 
+.ui-slider-popup {
+    position: absolute !important;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 14px;
+    z-index: 100;
+    opacity: 0.8;
+}
+
+.filter-elements {
+    display: flex;
+    width: 95%;
+    margin: auto;
+    height:70px;
+    border-radius: 8px;
+    background-color: cornsilk;
+}
+
+.text-filter {
+    position: relative;
+    font-family: Poppins;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.range-sliding-class{
+    position: relative;
+    width: 73%;
+}
+
