@@ -22,13 +22,13 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-fixed-top" style="background-color: #E5E5E5; ">
-        <div class="allElements">
+        <div class="allElements" style="bottom: 40px;">
             <div class = "navbar-header">
                 <a href="/products"><img src="/img/logo.svg" alt="Logo-Website" class="top-img-Main-Page"></a>
             </div>
             <ul class="navbar-nav">
             </ul>
-            <span><a href="#"><img class="cart-img nav-bar-option-svg" src="/img/cart.svg"></a></span>
+            <span><a href="/cart"><img class="cart-img nav-bar-option-svg" src="/img/cart.svg"></a></span>
             <span ><a href="#" class="AccountButton nav-bar-option-text">Account</a></span>
             <span><a href="#"><img class="sign-out-img nav-bar-option-svg" src="/img/logout.svg"></a></span>
         </div>
@@ -37,7 +37,7 @@
     <h1 class="wishlist-title">Filter Results : </h1>
     <br><br>
     <div class="all-products-container">
-        <%products.forEach(product=>{%>
+    <%products.forEach(product=>{%>
             <div class="common-container allProductsContainerMain">
                 <div class="all-products-inside-container">
                     <%if (product.productImage.data){%>

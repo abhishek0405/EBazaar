@@ -24,7 +24,7 @@ router.get('/home',isLoggedIn,isSeller,(req,res)=>{
 router.get('/orders',isLoggedin,isSeller,(req,res)=>{
   console.log(req.userData.id)
   Seller.findById(req.userData.id)
-
+        .populate(' myOrders.products myOrders.customer')
         .exec()
         .then(foundSeller=>{
           res.render("Seller/orders.ejs",{orders:foundSeller.myOrders.reverse()})

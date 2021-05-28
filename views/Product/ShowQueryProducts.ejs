@@ -29,7 +29,7 @@
             </div>
             <ul class="navbar-nav">
             </ul>
-            <span><a href="#"><img class="cart-img nav-bar-option-svg" src="/img/cart.svg"></a></span>
+            <span><a href="/cart"><img class="cart-img nav-bar-option-svg" src="/img/cart.svg"></a></span>
             <span ><a href="#" class="AccountButton nav-bar-option-text">Account</a></span>
             <span><a href="#"><img class="sign-out-img nav-bar-option-svg" src="/img/logout.svg"></a></span>
         </div>
@@ -40,9 +40,9 @@
     <br>
     <h1 class="wishlist-title">Search Results : <%=query%></h1><br><br>
     <div class="filter-elements">
-        <div class="text-filter">
-            Price Range : 
-        </div>
+        <!-- <div class="text-filter">
+            Price Range   
+        </div> -->
         <div class="Filters">
             <%prod_arr = products.map(it=>it._id)%>
             <form method="POST" action="/products/filter">
@@ -69,7 +69,7 @@
                      <br>
                     <!-- <img class="allProducts-Image" src="cart.png" srcset=""><br> -->
                     <div class="item-description" style="margin-left: 20px; margin-right: 20;">
-                        <h2 style="font-family: Poppins;font-size: 25px; font-weight: bold;"><%=product.name%></h2><br>
+                        <h2 style="font-family: Poppins;font-size: 20px; font-weight: bold;"><%=product.name%></h2><br>
                         <h4 style="font-family: Poppins;font-size: 20px; font-weight: bold;">Price : <%=product.price%></h4>
                     </div>
                     <br><br>
