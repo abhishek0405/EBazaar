@@ -52,19 +52,17 @@
             <span ><a href="#" class="AccountButton nav-bar-option-text">Account</a></span>
             <span><a href="#"><img class="sign-out-img nav-bar-option-svg" src="/img/logout.svg"></a></span>
         </div>
-    </nav><br>
-    <h2 class="wishlist-title">Product Details : </h2><br><br>
-    <div style="width: 90%; height: fit-content; margin: auto;">
-        <div style="display: flex;">
-                <div style="position: relative; width: 30%;">
+    </nav>
+    <div class="row">
+        <div class="product-main column">
+            <div class="row">
                 <%if (product.productImage.data){%>
                     <img  class="product-img column" src="data:image/<%=product.productImage.contentType%>;base64, 
                     <%=product.productImage.data.toString('base64')%>">  
                 <%} else if(product.imageURL){%>
                     <img  class="product-img column" src="<%=product.imageURL%>"> 
                 <%}%>
-                </div>
-                <div style="position: relative; width: 50%;">
+                <div class="product-details column">
                     <h2 class="product-title"><%=product.name%></h2>
                     <p class="product-seller">Sold by: <%=product.seller.companyName%></p>
                     <p class="product-stock">Stock Left: <%=product.stock%></p>
@@ -74,11 +72,14 @@
                     <p class="product-discount">discount: <%=product.discount%>%</p>
                     
                 </div>
-            <!-- <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p> -->
-        
-            <div style="position: relative; display: flex; flex-direction: column;">
-
-            <div style="position: relative; width: 20%;">
+            </div>
+            <div class="product-description">
+                <p class="product-description-title">Description:</p>
+                <p class="product-description-body"><%=product.description%></p>
+            </div>
+            <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p>
+        </div>
+        <div class="product-action column">
             <form method="POST" id="form-add-cart" action="/cart">
                 <input name="id" value="<%= product._id %>" hidden> 
                 <input id="add-cart-input" type=number min=1 max=15 value=1 name="count" hidden>
@@ -86,7 +87,7 @@
             <div class="add-cart">
                     <span id="add-cart-incr"><img class="add-cart-count-img add-cart-incr-img clickable"
                             src="/img/double_chev.svg" onclick="changeCart(1)"></span>
-                    <div onclick="addCart()" class="add-cart-main">
+                    <div onclick="addCart(" class="add-cart-main">
                         <span class="add-cart-left clickable">Add</span><span class="add-cart-center clickable"
                             id="add-cart-count">1</span><span class="add-cart-right clickable">to Cart</span>
                     </div>
@@ -94,20 +95,13 @@
                         src="/img/double_chev.svg" onclick="changeCart(-1)"></span>
                 </div>
             </form>
-            </div>
-            <div style="position: relative;">
+
             <form method="POST" id="form-add-wish"  action="/wishlist">
                 <input name="id" value="<%= product._id %>" hidden>
                 <span class="add-wish clickable" onclick="addWish()">Add to Wishlist</span>
             </form>
-            </div>
         </div>
     </div>
-</div><br>
-<div class="product-description">
-    <p class="product-description-title">Description:</p>
-    <p class="product-description-body"><%=product.description%></p>
-</div><br><br>
     <h2 class="wishlist-title">Similar Products : </h2><br>
     <div class="all-products-container">
         <%matchedProducts.forEach(product=>{%>

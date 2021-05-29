@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +18,14 @@
     <nav class="navbar  navbar-expand-lg navbar-fixed-top">
         <div class="allElements">
         <div class = "navbar navbar-header">
-            <img src="img/Logo.png" alt="Logo-Website" class="top-img-Main-Page">
+            <img src="img/logo.svg" alt="Logo-Website" class="top-img-Main-Page">
         </div>
         <ul class="navbar-nav">
             
         </ul>
         <span><a href="/cart"><img class="cart-img" src="img/cart.svg" alt=""></a></span>
         <span class="AccountButton">Account</span>
-        <span><a href="#"><img class="sign-out-img" src="img/Sign-out.png" alt=""></a></span>
+        <span><a href="#"><img class="sign-out-img" src="img/Sign-out.svg" alt=""></a></span>
     </div>
     </nav>
     <br>
@@ -31,6 +33,8 @@
     <br><br>
     
     <% cartItems.forEach(item => { %>
+        
+        <% if(item.product){ %>
         <div class="common-container wishlist-container">
             <div class="wishlist-inside-container">
                 <%if (item.product.productImage.data){%>
@@ -44,21 +48,22 @@
                     <br><h4>Number : <span><%=item.count%></span></h4>
                 </div>
                 <div class="wishlist-item-buttons">
-                    <!-- <button type="button" class="wishlist-add button-text">Buy Again</button> -->
+                    
                     <form method="POST" action="/cart?_method=PATCH">
                         <input name="id" value="<%= item.product._id %>" hidden>
                         (Change Quantity: <input type=number min=1 max=15 value= <%= item.count %> name="count">
                         <input type="submit" value="Go">)
                     </form>
-                    <form method="POST" action="/cart?_method=DELETE"></form>
+                    <form method="POST" action="/cart?_method=DELETE">
                         <input name="id" value="<%= item.product._id %>" hidden>
                         <button type="submit" class="wishlist-delete button-text">Delete</button>
                     </form>
                 </div>
             </div>
         </div>
+        <% } %>
     <% }) %>
     <div class="review-class"><a class="review-button" href="/cart/bill"><button class="review-button">Review Order</button></a></div>
     
 </body>
-</html>
+</html> 

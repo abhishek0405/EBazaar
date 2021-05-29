@@ -1,4 +1,61 @@
-FILL UP THE FORM TO EDIT THE PRODUCT
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product : </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles-nav.css">
+</head>
+<body>
+    <nav class = "navbar navbar-expand-lg" style="background-color: white;">
+        <div class = "navbar navbar-header">
+            <img src="/img/logo.svg" alt="Logo-Website" class="top-img">
+        </div>
+        <ul class="navbar-nav">
+            <li class="navbartop-back"><a href="home">Back</a></li>
+        </ul>
+    </nav>
+    <div class="main-sign-up-box sign-up-properties">
+        <div class="container">
+            <span class="main-heading ">Edit Product : </span><br><br>
+        <form method="POST" action="/products/<%=myProduct.id%>?_method=PATCH">
+            <div class="form-group">
+              <label class="first-subheading" for="exampleInputEmail1">Product Name : </label>
+              <input type = "text" name="name" value = "<%=myProduct.name%>" class="form-control box-class">
+            </div><br>
+            <input type = "text" name="seller" value = "<%=myProduct.seller%>" readonly hidden>
+            <div class="form-group">
+               <label class="first-subheading" for="exampleInputPassword1">Stock:</label>
+               <input type = "text" name="stock" value="<%=myProduct.stock%>" class="form-control box-class">
+             </div><br>
+             <div class="form-group">
+               <label class="first-subheading" for="exampleInputPassword1">Discount:</label>
+               <input type = "text" name="discount" class="form-control box-class">
+             </div><br>
+             <div class="form-group">
+               <label class="first-subheading" for="exampleInputPassword1">Description:</label>
+               <input type = "text" name="description" value = "<%=myProduct.description%>" class="form-control box-class">
+             </div><br>
+             <div class="form-group">
+               <label class="first-subheading" for="exampleInputPassword1">Price:</label>
+               <input type = "text" name="price" value = "<%=myProduct.price%>" class="form-control box-class">
+             </div><br>
+            <br>
+            <button type="submit" class="btn btn-primary final-button">Submit</button>
+          </form><br>
+        </div>   
+    </div>   
+</body>
+</html>
+
+
+
+<!-- FILL UP THE FORM TO EDIT THE PRODUCT
 <p></p>
 
 <p></p>
@@ -17,4 +74,4 @@ FILL UP THE FORM TO EDIT THE PRODUCT
    <p></p>
    Price:<input type = "text" name="price" value = "<%=myProduct.price%>">
    <button type="submit">Submit</button>
-</form>
+</form> -->

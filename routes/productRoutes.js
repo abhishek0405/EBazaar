@@ -174,7 +174,7 @@ router.get('/:id',isLoggedin,(req,res)=>{
                     .populate('seller')
                     .exec()
                     .then(foundProduct=>{
-                        console.log(recommender);
+                        // console.log(recommender);
                         res.render("Product/ShowProductID",{product:foundProduct,matchedProducts:matchedProducts.reverse()});
                     })
                     .catch(err=>{
