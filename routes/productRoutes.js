@@ -299,7 +299,7 @@ router.get('/edit/:id',isLoggedin,isSeller,(req,res)=>{
 router.patch('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
     console.log("in edit route");
     console.log(req.body);
-   
+    
     Product.updateOne({_id:req.params.id},{$set:req.body})
             .exec()
             .then(updatedProduct=>{
@@ -317,6 +317,7 @@ router.patch('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
 
 //delete a product
 router.delete('/:id',isLoggedin,isSeller,isOwner,(req,res)=>{
+    console.log("delete hit");
     Product.remove({_id:req.params.id})
            .exec()
            .then(result=>{

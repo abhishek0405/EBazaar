@@ -30,3 +30,9 @@ PHASE 3
 ->Integrate Reccomendation System->DONE
 
 
+
+
+Checking UI
+
+1)customer reg
+2)customer login
