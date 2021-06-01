@@ -82,6 +82,20 @@
                 <label class="first-subheading">Enter City :</label>
                 <input  class="form-control box-class" type="text" name="country" placeholder="India" style="margin:auto;width: 95.4%;">
             </div><br>
+            <input type="text" value="<%=Name%>" hidden=true name="name">
+            <input type="text" value="<%=cartItems.total*100%>" hidden=true name="bill">
+            <input type="text" value="<%=Name%>'s Order" hidden=true name="description">
+            <input type="text" value="<%=orderDetails%>" hidden=true name="orderDetails">
+            <script src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="<%= key %>" 
+                data-amount="<%=cartItems.total*100%>" 
+                data-currency="inr" 
+                data-name="<%=Name%>" 
+                data-description="Billing Counter" 
+                data-locale="auto"> 
+    
+            </script> 
           </form><br>
           <!-- <p style="text-align:center">
           <a href="#" class="dont-have-account">I already have an account</a>
@@ -89,20 +103,10 @@
         </div>   
     </div><br><br>
     
+    
 
-    <script
-        src="//checkout.stripe.com/v2/checkout.js"
-        class="stripe-button"
-        data-key="<%= key %>" 
-        data-amount="<%=cartItems.total*100%>" 
-        data-currency="inr" 
-        data-name="<%=Name%>" 
-        data-description="Billing Counter" 
-        data-locale="auto"> 
-        
-        
 
-        </script> 
+    
         
     </div>
     

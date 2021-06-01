@@ -53,11 +53,12 @@
             </div>
             <div class="content-div sellerOrderEach gone sellerOrderEachContent" style="height: fit-content; transition: 200ms ease; ">
                 <div style="display: flex; font-family: Poppins;font-style: normal; margin: 15px;">
-
-                    <div style="position: relative; width: 33%;">
+                    
+                    <div style="position: relative; width: 73%;">
 
                         <div style="font-size: 30px; font-weight: bolder;">Order Details : </div><br>
-                        <div style="font-size: 20px; font-weight: bold;">Stock : <%=order.products.stock%></div><br>
+                        <div style="font-size: 20px; font-weight: bold;">Name : <%=order.products.name%></div><br>
+                        <div style="font-size: 20px; font-weight: bold;">Quantity : <%=order.count%></div><br>
                         <div style="font-size: 20px; font-weight: bold;">Discount : <%=order.products.discount%></div><br>
                         <div style="font-size: 20px; font-weight: bold;">Price : <%=order.products.price%></div><br>
                     </div>

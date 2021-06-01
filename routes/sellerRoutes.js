@@ -8,7 +8,8 @@ const isLoggedin = require('../middleware/Auth/isLoggedin');
 
 
 router.get('/home',isLoggedIn,isSeller,(req,res)=>{
-    res.render('Seller/sellerHome')
+    
+    res.render('Seller/sellerHome',{userData:req.userData});
 })
 
 router.get('/products',isLoggedIn,isSeller,(req,res)=>{

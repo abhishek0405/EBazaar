@@ -13,7 +13,7 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',isLoggedin,isCustomer, function(req, res){ 
-
+    console.log(req.body.orderDetails);
     let orderDetails = JSON.parse(req.body.orderDetails);
     console.log(orderDetails)
     //customer and adrress obj
@@ -83,13 +83,17 @@ router.post('/',isLoggedin,isCustomer, function(req, res){
         }
                   
         
-        res.send("Success") // If no error occurs 
+        res.render("Payment/SuccessShow.ejs") // If no error occurs 
     }) 
 
     .catch((err) => { 
         res.send(err)    // If some error occurs 
     }); 
 }) 
+
+router.get('/succ',(req,res)=>{
+    res.render("Payment/SuccessShow.ejs") // If no error occurs 
+})
 
 module.exports = router;
 

@@ -47,8 +47,7 @@ router.patch('/', isLoggedin, isCustomer, (req, res) => {
             {_id: customer._id},
             {cart: {product: req.body.id, count: req.body.count}}   //TODO: what if it already exists, increase count?
         ).exec().then(result => {
-            res.send("yay updated")
-            console.log('updated quantity:')
+            res.redirect('/cart')
             console.log(result)
         }).catch(error => {
             console.log(error)

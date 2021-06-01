@@ -43,16 +43,17 @@
                     <img class="wishlist-image" src="<%=item.product.imageURL%>" alt="" srcset="">
                 <%}%>
                 <div class="item-description">
-                    <b><h1><%= item.product.name %></h2></b><br>
+                    <b><h3><%= item.product.name %></h3></b><br>
                     <h4>Product Description</h4>
                     <br><h4>Number : <span><%=item.count%></span></h4>
                 </div>
                 <div class="wishlist-item-buttons">
-                    
-                    <form method="POST" action="/cart?_method=PATCH">
+                   <div style="padding-left: 80px;">
+                    <form method="POST" action="/cart?_method=PATCH" >
                         <input name="id" value="<%= item.product._id %>" hidden>
-                        (Change Quantity: <input type=number min=1 max=15 value= <%= item.count %> name="count">
-                        <input type="submit" value="Go">)
+                        <input type=number min=1 max=15 value= <%= item.count %> name="count">
+                        <input type="submit" value="Go" style="background: #00c925;color: white; width: 100px;border-radius: 10%;">
+                    </div> 
                     </form>
                     <form method="POST" action="/cart?_method=DELETE">
                         <input name="id" value="<%= item.product._id %>" hidden>
