@@ -72,6 +72,7 @@
                     <p class="product-msrp">MSRP: ₹<%=product.price%></p>
                     <p class="product-price">Price: ₹<%=product.price*(1-product.discount/100.0)%></p>
                     <p class="product-discount">discount: <%=product.discount%>%</p>
+                    <p><a href="/products/<%=product._id%>/review/"><h3>Reviews</h3></a></p>
                     
                 </div>
             <!-- <p>(<a href="/products/<%=product._id%>/review">Reviews</a>)</p> -->

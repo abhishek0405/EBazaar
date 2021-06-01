@@ -368,7 +368,7 @@ router.post('/:id/review', isLoggedin, isCustomer, (req, res)=>{
         upsert: true
     }).exec().then(upsertReview => {
         console.log(`Upsert: review: rating: ${upsertReview.rating}, review: ${upsertReview.review}}`)
-        res.send("yay added")
+        res.redirect('/products/'+req.params.id+'/review');
     }).catch(error => {
         console.log(error)
         res.send("system error")
