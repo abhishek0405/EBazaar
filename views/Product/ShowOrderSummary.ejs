@@ -45,8 +45,8 @@
                     <!-- <img class="allProducts-Image" src="cart.png" srcset=""><br> -->
                     <div class="item-description" style="margin-left: 10px; margin-right: 10;width: 80%;">
                         <h2 style="font-family: Poppins;font-size: 25px; font-weight: bold;"><%=product.name%></h2><br>
-                        <h2 style="font-family: Poppins;font-size: 20px; font-weight: bold;">Price : <%=product.price%></h2><br>
-                        <h2 style="font-family: Poppins;font-size: 20px; font-weight: normal;"> Cost: <%=product.price%></h2>
+                        <h2 style="font-family: Poppins;font-size: 20px; font-weight: bold;">Price : ₹<%=product.price%></h2><br>
+                        
                     </div>
                     <br><br>
                 </div>
@@ -60,7 +60,7 @@
     <div class="main-sign-up-box-sign-up-dimensions sign-up-properties" style="position: relative; left: 0px; width: 90%;margin: auto;">
 
         <div class="container ">
-            <div class="main-heading ">Total : <span style="font-weight: bolder;"><%=cartItems.total%></span></div><br><br>
+            <div class="main-heading ">Total :₹ <span style="font-weight: bolder;"><%=cartItems.total%></span></div><br><br>
         <form action="/payments" method="POST">
             <div class="form-group">
               <label class="first-subheading" for="exampleInputEmail1">Enter Flat : </label>
@@ -79,13 +79,14 @@
                 <input type="text" name="state" placeholder="Maharashtra" class="form-control box-class" id="exampleInputPassword1" style="margin:auto;width: 95.4%;">
               </div><br><br>
               <div class="form-group">
-                <label class="first-subheading">Enter City :</label>
+                <label class="first-subheading">Enter Country :</label>
                 <input  class="form-control box-class" type="text" name="country" placeholder="India" style="margin:auto;width: 95.4%;">
             </div><br>
             <input type="text" value="<%=Name%>" hidden=true name="name">
             <input type="text" value="<%=cartItems.total*100%>" hidden=true name="bill">
             <input type="text" value="<%=Name%>'s Order" hidden=true name="description">
             <input type="text" value="<%=orderDetails%>" hidden=true name="orderDetails">
+            
             <script src="//checkout.stripe.com/v2/checkout.js"
                 class="stripe-button"
                 data-key="<%= key %>" 
@@ -96,6 +97,7 @@
                 data-locale="auto"> 
     
             </script> 
+            
           </form><br>
           <!-- <p style="text-align:center">
           <a href="#" class="dont-have-account">I already have an account</a>

@@ -13,23 +13,24 @@
     <link rel="stylesheet" href="css/styles-nav.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-fixed-top" >
         <div class="allElements">
         <div class = "navbar navbar-header">
-            <img src="img/Logo.png" alt="Logo-Website" class="top-img-Main-Page">
+            <img src="/img/Logo.svg" alt="Logo-Website" class="top-img-Main-Page">
         </div>
         <ul class="navbar-nav">
         </ul>
-        <span><a href="/cart"><img class="cart-img" src="img/cart.png" alt=""></a></span>
+        <span><a href="/cart"><img class="cart-img" src="img/cart.svg" alt=""></a></span>
         <span class="AccountButton">Account</span>
-        <span><a href="#"><img class="sign-out-img" src="img/Sign-out.png" alt=""></a></span>
+        <span><a href="#"><img class="sign-out-img" src="img/logout.svg" alt=""></a></span>
     </div>
     </nav>
     <br>
     <h1 class="wishlist-title">Wishlist</h1>
     <br><br>
+    <div style="padding-left: 50px;">
     <% wishes.forEach(wish => { %>
-        <div class="common-container wishlist-container" style="margin: 10px;">
+        <div class="common-container wishlist-container" style="margin: 10px">
             <div class="wishlist-inside-container">
                 <%if (wish.productImage.data){%>
                     <img class="wishlist-image" src="data:image/<%=wish.productImage.contentType%>;base64,<%=wish.productImage.data.toString('base64')%>" alt="" srcset="">
@@ -42,7 +43,7 @@
                     <h4>Product Description</h4>
                 </div>
                 <div class="wishlist-item-buttons">
-                    <button type="button" class="wishlist-add button-text">Cart(useless)</button>
+                    
                     <form method="POST" action="/wishlist/<%= wish._id %>?_method=DELETE">
                         <input name="id" value="<%= wish._id %>" hidden>
                         <button type="submit" class="wishlist-delete button-text">Delete</button>
@@ -51,6 +52,7 @@
             </div>
         </div>
     <% }) %>
+</div>
 </body>
 </html>
 

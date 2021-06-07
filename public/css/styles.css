@@ -453,5 +453,8 @@ a {
     transition: 300ms ease;
 }
 
+.clickable:hover {
+    cursor: pointer;
+}
 
 

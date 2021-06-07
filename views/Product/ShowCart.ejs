@@ -18,7 +18,7 @@
     <nav class="navbar  navbar-expand-lg navbar-fixed-top">
         <div class="allElements">
         <div class = "navbar navbar-header">
-            <img src="img/logo.svg" alt="Logo-Website" class="top-img-Main-Page">
+            <a href="/products"><img src="img/logo.svg" alt="Logo-Website" class="top-img-Main-Page"></a>
         </div>
         <ul class="navbar-nav">
             
@@ -35,7 +35,7 @@
     <% cartItems.forEach(item => { %>
         
         <% if(item.product){ %>
-        <div class="common-container wishlist-container">
+        <div class="common-container wishlist-container" style="margin-bottom: 10px;">
             <div class="wishlist-inside-container">
                 <%if (item.product.productImage.data){%>
                     <img class="wishlist-image" src="data:image/<%=item.product.productImage.contentType%>;base64,<%=item.product.productImage.data.toString('base64')%>" alt="" srcset="">

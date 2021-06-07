@@ -28,7 +28,7 @@ router.post('/', isLoggedin, isCustomer, (req, res) => {
             res.send("system error")
         })
     }).then(result => {
-        res.send("yay added")
+        res.redirect('/wishlist');
         console.log(`added wishlist: ${JSON.stringify(result)}`)
     }).catch(error => {
         console.log(error)
@@ -39,7 +39,7 @@ router.post('/', isLoggedin, isCustomer, (req, res) => {
 router.delete('/:id', isLoggedin, isCustomer, (req, res) => {
     console.log(`DELETE request`)
     Customer.updateOne({email: req.userData.email}, {$pull: {wishlist: req.params.id}}).exec().then(result=>{
-        res.send("Deleted yay")
+        res.redirect('/wishlist');
     }).catch(error => {
         console.log(error)
         res.send("system error")
