@@ -46,8 +46,7 @@ Database: MongoDB.
 - `node server.js` 
 - Hooray!You can now see it running on your localhost!
 
-### NOTE
-This is fully functional backend, frontend will be integrated soon!
+
 
 
 
